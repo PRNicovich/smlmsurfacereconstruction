@@ -1,4 +1,25 @@
 function [rosinOut, splitDist] = rosinThreshold(piecewiseVector, varargin)
+%
+% Use Rosin thresholding to determine threshold value for distance between
+% consecutive points in supplied vectors. 
+%
+% Uses method from "Unimodal thresholding". Paul L.Rosin. (2001). 
+% https://doi.org/10.1016/S0031-3203(00)00136-9
+%
+% Segments unimodal distribution with tail into main distribution and tail.
+%
+% Inputs:
+% piecewiseVector - cell array, each with matrix of points in space.
+%                     Code will measure distance between consecutive points
+%                     and apply Rosin thresholding to that distribution of 
+%                     distances. Is xPiecewise or yPiecewise from
+%                     MeshFitting3d.m 
+% 
+% varargin - optional arguments. Only defined is first entry - boolean for
+%                     providing plots in operation. 
+% Outputs:
+% rosinOut - threshold value of distance segmenting splitDist values
+% splitDist - all distances between consecutive points in piecewiseVector.
 
 p = inputParser;
 defaultPlot = true;

@@ -1,6 +1,19 @@
 function [xunit, yunit, zunit] = GenerateTestDataFromSTLFile(STLFileName, NPointsToGenerate, center, scaleFactor, varargin)
 
-% Make points randomly distributed on surface defined by STL file.
+% Generate points randomly distributed on surface defined by STL file.
+% Points are evenly distributed over surface area of object. 
+%
+% Inputs:
+% STLFileName - path to STL file. String.
+% NPointsToGenerate - number of points to scatter on surface of this STL file. Scalar.
+% center - specify center of mass of generated point cloud.  1 x 3 vector.
+% scaleFactor - scale STL file dimensions.  Scalar.
+% 
+% Output:
+% [xunit, yunit, zunit] = NPointsToGenerate x 3 vector of points around surface of STL file object.
+% 
+% PRN 2019
+% Allen Institute for Brain Science and UNSW Single Molecule Science
 
 % STLFileName = 'D:\Dropbox\Proposals\Discovery - 3D PALM\Figures\ResolutionTestSTL.stl';
 

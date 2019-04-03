@@ -1,5 +1,7 @@
 
 %% Simulate points around ground truth
+% This section can be substituted with other means to generate SMLM
+% dataset. Output should be N x 3 matrix of SMLM points named 'pts'.
 
 % Double-check units here
 sizeX = 10000; % nm
@@ -52,6 +54,9 @@ pts(pts(:,1) > sizeX | pts(:,2) > sizeY | pts(:,3) > sizeZ, :) =[ ];
 pts(pts(:,1) < 0 | pts(:,2) < 0 | pts(:,3) < 0, :) =[ ];
 
 %% Rotate input point cloud to avoid having one big plane parallel to the z axis
+% First step in 3d reconstruction analysis.  Required if object has a large
+% area that is parallel to one of the spatial planes.  Adding a tilt to the
+% object works around this problem. 
 
 rotationAroundX = pi/10; % radians
 
@@ -62,6 +67,7 @@ Z = pts(:,2)*sin(rotationAroundX) + pts(:,3)*cos(rotationAroundX);
 pts = [X, Y, Z, pts(:,4:5)];
 
 %% Loop over slices in x
+% Main fitting function along single axis
 
 xSlice = 60; % Thickness of single slice, in nm
 subsampleStep = 10; % Subsample of fitted curve, in points
@@ -72,9 +78,14 @@ ptRange = [max(pts(:,(1:3))); min(pts(:,1:3))];
 xPiecewise = fitPointSetLoop(pts, ptRange(2,1), ptRange(1,1), xSlice, 2, subsampleStep, onPoint);
     
 %% Loop over slices in y
+% Repeat above section with same parameters but on perpendicular axis.
 yPiecewise = fitPointSetLoop(pts, ptRange(2,2), ptRange(1,2), xSlice, 1, subsampleStep, onPoint);
 
 %% Loop over slices between X and Y axes
+% Rotate point cloud by 45 degrees and go again.  This is done to add
+% points to next step and generate smoother cloud. 
+% Rotation amount should be sufficient to avoid having much of object faces
+% to be close to parallel to either X or Y axis. 
 
 rotationAroundZ = pi/4; % radians
 
@@ -242,6 +253,7 @@ for z = 1:numel(zVect)
 end
 
 %% Rotate back zP2
+% Is this necessary given below un-rotation?
 
 X = zP2(:,1)*cos(-rotationAroundZ) - zP2(:,2)*sin(-rotationAroundZ);
 Y = zP2(:,1)*sin(-rotationAroundZ) + zP2(:,2)*cos(-rotationAroundZ);
@@ -278,6 +290,7 @@ zP2 = [X, Y, Z];
 zP = [zP; zP2];
 
 %% Unskew original point cloud
+% Undo previous rotation to return to original point cloud orientation. 
 
 X = pts(:,1);
 Y = pts(:,2)*cos(-rotationAroundX) - pts(:,3)*sin(-rotationAroundX);

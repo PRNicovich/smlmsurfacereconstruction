@@ -1,4 +1,4 @@
-function smoothedFit = meshfitAndSmooth2d(slicePts, subsampleStep, onPoint)
+function [smoothedFit, varargout] = meshfitAndSmooth2d(slicePts, subsampleStep, onPoint)
 
     dt = delaunayTriangulation(slicePts(:,1:2));
 
@@ -56,4 +56,9 @@ function smoothedFit = meshfitAndSmooth2d(slicePts, subsampleStep, onPoint)
     subsampleVector = onPoint:subsampleStep:size(minSet, 1);
     piecewisePoints = [xx(subsampleVector), yy(subsampleVector)];
     
-    smoothedFit = piecewisePoints;
+    if nargout == 1
+        smoothedFit = piecewisePoints;
+    elseif nargout == 2
+        smoothedFit = piecewisePoints;
+        varargout{1} = minSet;
+    end

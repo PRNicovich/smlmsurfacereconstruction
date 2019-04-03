@@ -1,5 +1,21 @@
 function xPiecewise = fitPointSetLoop(pts, start, stop, xSlice, axisToUse, subsampleStep, onPoint)
 
+% Fit SMLM point cloud in slices along single plane.
+% Uses graph traverse methods to approximate center
+% path along a 2d point cloud. 
+% Inputs:
+% pts - 3D SMLM point cloud. N x 3 matrix.
+% start - Start position along slicing axis. Scalar in pts units.
+% stop - Stop position along slicing axis. Scalar in pts units.
+% xSlice - Thickness of slice.  Scalar in pts units.
+% axisToUse - Specify slice axis. 1 = slice along x axis. 2 = slice along y axis.
+% subsampleStep = Smoothing factor for fitting curve.  Scalar. 
+% onPoint - Number of points to skip from beginning of piecewise fitting. 
+% Outputs:
+% xPiecewise - cell array of N x 3 points corresponding to approximated path through point cloud in each slice.
+%
+
+
 xVect = start : xSlice : stop;
 
 xPiecewise = cell(numel(xVect), 2);

@@ -37,8 +37,8 @@ N_cols = numel(idx)+1; % Number of tabs in first line, plus 1
 
 [Head_text, Head_post] = textscan(fid, format_spec, N_cols, 'delimiter', TABCHAR);
 
-if length(Head_text{1}) == 24 % Nikon file format
-    format_spec = ['%s', repmat('%n', 1, 23)]; 
+if (length(Head_text{1}) == 24) ||  (length(Head_text{1}) == 26) % Nikon file format
+    format_spec = ['%s', repmat('%n', 1, N_cols - 1)]; 
 else % Zeiss file format
     Body_format = '%n';
     format_spec = repmat(Body_format, 1, numel(idx)+1);
@@ -158,6 +158,45 @@ end
                      % power of 2, closest power of 2];
                      closestPow2 = 2^max([ceil(log2(max(Data(:,5)/pixelSizenm))), ...
                                           ceil(log2(max(Data(:,6)/pixelSizenm)))]);
+                                      
+            
+                     prevPow2 = 2^(log2(closestPow2)-1);
+                     outSmallBox = ((Data(:,5) > prevPow2*1e2) | (Data(:,6) > prevPow2*1e2));
+                     
+                     
+                     pctOutSmallBox = sum(outSmallBox)/numel(outSmallBox);
+                     if pctOutSmallBox < 0.05
+                         choice = questdlg(sprintf('%.f of %.f points (%.1d %%) are outside %.f x %.f pixel box.\n\nWould you like to truncate the field of view?', ....
+                                                    sum(outSmallBox), numel(outSmallBox), pctOutSmallBox*100, prevPow2, prevPow2), ...
+                                            'Truncate master FOV', ...
+                                            sprintf('Truncate to %.f x %.f', prevPow2, prevPow2), ...
+                                            sprintf('Keep %.f x %.f', closestPow2, closestPow2), ...
+                                            sprintf('Truncate to %.f x %.f', prevPow2, prevPow2) );
+                                        
+                         switch choice
+                             case sprintf('Truncate to %.f x %.f', prevPow2, prevPow2)
+                                 
+                                 Data(outSmallBox, :) = [];
+                                 closestPow2 = prevPow2;
+                                 
+                             case sprintf('Keep %.f x %.f', closestPow2, closestPow2)
+                                 
+                                 % Do nothing + keep size with closestPow2
+                                 
+                             otherwise
+                                 
+                                 % Default is do nothing + keep size with closestPow2
+                                 
+                         end
+                         
+                     end                 
+                                      
+                                      
+                                      
+                                      
+                                      
+                                      
+                                      
             Footer_text{2} = [pixelSizenm/1e3, pixelSizenm/1e3, 0.1, 0.1, ...
                                 closestPow2/0.1, closestPow2/0.1];
 
@@ -181,13 +220,16 @@ end
             Data = [Body_text{1} Body_text{2} Body_text{3} Body_text{4} Body_text{5} Body_text{6}...
                 Body_text{7} Body_text{8} Body_text{9} Body_text{10} Body_text{11} Body_text{12} Body_text{13} Body_text{14}]; 
             
-        case 24 % Nikon format
+        case {24, 26} % Nikon format
 
             % Need to get channel ID out of a string ID in the first
             % column
+            
+            % If 26 columns, Zw and Zwc are ignored
 
             channelID = ones(length(Body_text{1}), 1);
             possibleChannels = unique(Body_text{1});
+            possibleChannels(cellfun(@isempty, possibleChannels)) = [];
             if length(unique(Body_text{1})) > 1
                 for k = 1:length(possibleChannels)
                     channelID(strcmp(Body_text{1}, possibleChannels{k}), 1) = k;
@@ -209,6 +251,40 @@ end
                      % power of 2, closest power of 2];
                      closestPow2 = 2^max([ceil(log2(max(Data(:,5)/160))), ...
                                           ceil(log2(max(Data(:,6)/160)))]);
+                                      
+                                      
+                     prevPow2 = 2^(log2(closestPow2)-1);
+                     outSmallBox = ((Data(:,5) > prevPow2*1e2) | (Data(:,6) > prevPow2*1e2));
+                     pctOutSmallBox = sum(outSmallBox)/numel(outSmallBox);
+                     if pctOutSmallBox < 0.05
+                         choice = questdlg(sprintf('%.f of %.f points (%.1d %%) are outside %.f x %.f pixel box.\n\nWould you like to truncate the field of view?', ....
+                                                    sum(outSmallBox), numel(outSmallBox), pctOutSmallBox*100, prevPow2, prevPow2), ...
+                                            'Truncate master FOV', ...
+                                            sprintf('Truncate to %.f x %.f', prevPow2, prevPow2), ...
+                                            sprintf('Keep %.f x %.f', closestPow2, closestPow2), ...
+                                            sprintf('Truncate to %.f x %.f', prevPow2, prevPow2) );
+                                        
+                         switch choice
+                             case sprintf('Truncate to %.f x %.f', prevPow2, prevPow2)
+                                 
+                                 Data(((Data(:,5) > prevPow2*1e2) | (Data(:,6) > prevPow2*1e2)), :) = [];
+                                 closestPow2 = prevPow2;
+                                 
+                             case sprintf('Keep %.f x %.f', closestPow2, closestPow2)
+                                 
+                                 % Do nothing + keep size with closestPow2
+                                 
+                             otherwise
+                                 
+                                 % Default is do nothing + keep size with closestPow2
+                                 
+                         end
+                         
+                     end
+                                  
+                     
+                     
+                     
             Footer_text{2} = [0.16, 0.16, 0.1, 0.1, closestPow2/0.1, closestPow2/0.1];
 
     end
