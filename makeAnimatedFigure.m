@@ -33,8 +33,8 @@ ylabel('Position (nm)', 'fontsize', 12);
 zlabel('Position (nm)', 'fontsize', 12);
 %%
 p =1;
-for k = 120:3:359
-    
+% for k = 120:3:359
+for k = 300    
     view(k+30, 19);
     axis([1000 1e4 1000 1e4 2000 1e4]);
     
@@ -42,26 +42,27 @@ for k = 120:3:359
         lightangle(lightHand(m), 60+k, 30)
     end
    
-    drawnow;
-    
-          % Capture the plot as an image 
-      frame = getframe(h); 
-      im = frame2im(frame); 
-      [imind,cm] = rgb2ind(im,256); 
-      % Write to the GIF File 
-      if p == 1 
-          imwrite(imind,cm,fileName,'gif', 'Loopcount',inf, 'DelayTime', gifDelay); 
-          p = 0;
-      else 
-          imwrite(imind,cm,fileName,'gif','WriteMode','append', 'DelayTime', gifDelay); 
-      end 
+%     drawnow;
+%     
+%           % Capture the plot as an image 
+%       frame = getframe(h); 
+%       im = frame2im(frame); 
+%       [imind,cm] = rgb2ind(im,256); 
+%       % Write to the GIF File 
+%       if p == 1 
+%           imwrite(imind,cm,fileName,'gif', 'Loopcount',inf, 'DelayTime', gifDelay); 
+%           p = 0;
+%       else 
+%           imwrite(imind,cm,fileName,'gif','WriteMode','append', 'DelayTime', gifDelay); 
+%       end 
     
     
 end
 
+%%
 % Sampled point cloud
 hold on
-set(t, 'string', 'Generated SMLM point cloud');
+% set(t, 'string', 'Generated SMLM point cloud');
 
 ptsCld = plot3(pts(:,1), pts(:,2), pts(:,3), '.', 'markersize', 1, 'markeredgecolor', [0.8, 0.8, 0.8]);
 
@@ -115,11 +116,12 @@ end
 % Add in fit curves
 cla;
 
-set(t, 'string', 'Piecewise point cloud fitting');
+% set(t, 'string', 'Piecewise point cloud fitting');
 
 ptsCld = plot3(pts(:,1), pts(:,2), pts(:,3), '.', 'markersize', 1, 'markeredgecolor', [0.8, 0.8, 0.8]);
 
-for k = 1:length(xPiecewise)
+% for k = 155
+ for k = 1:length(xPiecewise)
     
     if ~isempty(xPiecewise{k, 1})
     
@@ -130,13 +132,21 @@ for k = 1:length(xPiecewise)
         Y = Y*cos(-rotationAroundX) - Z*sin(-rotationAroundX);
         Z = Y*sin(-rotationAroundX) + Z*cos(-rotationAroundX)+100;
     
-        plot3(X, ...
-            Y, ...
-            1.1*Z, ...    
-            'r', 'linewidth', 1);
+        if k == 62
+            lineWide = 2;
+            lineColor = 'r';
+        else
+            lineWide = 1;
+            lineColor = [1 .4 .4];
+        end
+        
+        plot3(X, Y, 1.1*Z, ...    
+            'color', lineColor, 'linewidth', lineWide);
+        
     end
 end
 
+% for k = 105
 for k = 1:length(yPiecewise)
     
     if ~isempty(yPiecewise{k, 1})
@@ -148,34 +158,44 @@ for k = 1:length(yPiecewise)
         Y = Y*cos(-rotationAroundX) - Z*sin(-rotationAroundX);
         Z = Y*sin(-rotationAroundX) + Z*cos(-rotationAroundX)+100;
 
+
+        
+        if k == 105
+            lineWide = 2;
+            lineColor = 'b';
+        else
+            lineWide = 1;
+            lineColor = [.4 .4 1];
+        end
+        
         plot3(X, Y, 1.1*Z, ...    
-            'b', 'linewidth', 1);
+            'color', lineColor, 'linewidth', lineWide);
     end
 end
-
-for k = 1:3:179
-    
-    view(k+30, 19);
-    axis([1000 1e4 1000 1e4 2000 1e4]);
-    
-    
-    
-    drawnow;
-    
-        
-              % Capture the plot as an image 
-      frame = getframe(h); 
-      im = frame2im(frame); 
-      [imind,cm] = rgb2ind(im,256); 
-      % Write to the GIF File 
-
-          imwrite(imind,cm,fileName,'gif','WriteMode','append', 'DelayTime', gifDelay); 
-
-    
-end
-
-set(findobj('color', 'b'), 'visible', 'off');
-set(findobj('color', 'r'), 'visible', 'off');
+% 
+% for k = 1:3:179
+%     
+%     view(k+30, 19);
+%     axis([1000 1e4 1000 1e4 2000 1e4]);
+%     
+%     
+%     
+%     drawnow;
+%     
+%         
+%               % Capture the plot as an image 
+%       frame = getframe(h); 
+%       im = frame2im(frame); 
+%       [imind,cm] = rgb2ind(im,256); 
+%       % Write to the GIF File 
+% 
+%           imwrite(imind,cm,fileName,'gif','WriteMode','append', 'DelayTime', gifDelay); 
+% 
+%     
+% end
+% 
+% set(findobj('color', 'b'), 'visible', 'off');
+% set(findobj('color', 'r'), 'visible', 'off');
 
 %%
 % Add in fit surface
@@ -286,3 +306,8 @@ for k = 270:3:469
 end
 
 % set(triPlot, 'visible', 'off');
+%% 
+xlabel('Position (nm)', 'fontsize', 12);
+ylabel('Position (nm)', 'fontsize', 12);
+zlabel('Position (nm)', 'fontsize', 12);
+set(gca, 'fontsize', 12);

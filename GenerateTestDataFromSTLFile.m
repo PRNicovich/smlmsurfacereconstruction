@@ -175,6 +175,7 @@ MolCoords = MolCoords(:,[1 2 3])*1000;
 % yunit = (MolCoords(:,2) - 0)*scaleFactor + center(2);
 % zunit = (MolCoords(:,3) - 0)*scaleFactor + center(3);
 
+display(center)
 
 xunit = (MolCoords(:,1) - mean(MolCoords(:,1)))*scaleFactor + center(1);
 yunit = (MolCoords(:,2) - mean(MolCoords(:,2)))*scaleFactor + center(2);
