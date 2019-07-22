@@ -1,0 +1,119 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Rusty Nicovich}
+\title{Surface mesh fitting of 3D SMLM Datasets}
+
+\bibliographystyle{unsrt}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+This document describes the algorithm and implementation of a method to generate surface reconstructions for 3D point cloud datasets with noise characteristics representative of single molecule localization microscopy (SMLM) datasets. Code referenced in this document is available in the associated Git repository, located at https://bitbucket.org/nicovich12/smlmmeshfitting/src/master/.
+
+\subsection{Motivation}
+
+Biological membranes are structures rich in molecular interactions driving cellular- and organism-level changes.  Proteins, lipids, and other molecules surrounding the cell membrane are regulated spatially within signaling cascades leading to these larger events.  Many membrane-based systems include components associated with certain topographic features of the membrane, be it protrusions, invaginations, or areas of high or low curvature, both positive and negative.  This spatial regulation occurs on length scales not possible to observe using conventional light microscopy.  The length scales for observation made available by super-resolution microscopy reveals additional details about these spatial regulations.  However, current analyses are insufficient to effectively model the underlying structure of the plasma membrane.  
+
+Were it to exist, an effective method for analysis in this context would return a surface model of the membrane with resolution on the order of 10 to 100 nm.  Current surface reconstruction algorithms designed for 3D scanning or LiDAR applications are not tailored to the noise characteristics of SMLM datasets.  Additionally it is currently unclear how the resolution of such a surface would be evaluated.   
+
+\subsection{Single Molecule Localization Microscopy (SMLM)}
+
+SMLM datasets are spatial point clouds arising from serially-detected isolated single molecules collected in a time-lapse dataset.  Emitters within the specimen stochastically activate, are detected on a camera for one or more frames, and then bleach or cease to emit.  These emitters are fluorophores associated with a biological target (usually a protein).  Many tens to millions of emitters will become emissive, be detected, and bleach over the course of an experiment.  Each single emitter localized in a single frame is referred to as a `detection' or `detection event' and makes a single point in the final dataset. 
+
+The increased precision of a SMLM dataset arises from the localization of these single emitters.  As they are isolated, diffraction-limited spots, it is possible to fit these emitters to a prior (approximated as a 2D Gaussian) and retrieve a localization of each emitter to ~10x higher precision than the width of the underlying width of the emitter's spot on the camera.  This localization precision is approximated as the width of the emitter peak divided by the square root of the number of photons collected for that peak.  In practice, localization precisions of 20-50 nm are common.   
+
+In the case of an emitter that persists for multiple frames or re-activates over multiple cycles, each single frame this emitter is detected yields a new detection event.  As a result, a single emitter will give rise to one or more detection events.  A series of detection events from a single emitter will typically be observed as an area of local density in the full point cloud dataset, with multiple detection events normally distributed around a centroid.  The centroid will be close to the emitter's true location and the width of the local point cloud distribution represented by the localization precision of the points. 
+
+The experimental realization of SMLM datasets yields characteristics to consider for further analysis:
+\begin{enumerate}
+\item \textbf{Noisy} - Imprecision of point cloud is on order of desired feature size
+\item \textbf{Sparse} - Emitters (and therefore point cloud) will contain local gaps on order of desired feature size
+\item \textbf{Spatially inhomogeneous} - Local precision and density will vary across dataset
+\item \textbf{Unordered} - Points will not be ordered by any value relevant to analysis
+\item \textbf{Contain significant off-target signal} - Emitters and false positive detections can occur far from desired target object 
+\item \textbf{Best defined by local center of mass} - Analysis should capture local features 
+\item \textbf{Not defined by a priori model for shape} - Target features are amorphous and have no reference for underlying shape
+\end{enumerate}
+
+This project strives to generate surface reconstructions from point clouds including these above features to yield insights regarding biological membrane topography. 
+
+\section{Data Simulation}
+\subsection{SMLM data simulation}
+SMLM data simulation proceeds by:
+
+\begin{enumerate}
+	\item Defining an underlying, `ground truth' structure.
+	\item Scattering emitters across this structure at some pre-defined density.
+	\item Adding additional `off-target' emitters randomly through the detection volume at some pre-defined density. 
+	\item Generating detection events around each emitter, with some pre-defined distribution modeling the number of events per emitter and localization precision of each event.  	
+	\item Outputting the list of detection events to a file or array.
+\end{enumerate}
+
+These steps proceed for both 2D and 3D simulation.  Currently 3D simulation only is supported by the repo, but 2D could be included if desired.
+
+\subsection{3D point clouds based on test surfaces}
+
+Input objects for 3D SMLM point cloud analysis can be provided in the STL format.  This file format represents a surface as a series of locally-flat triangles with associated nodes.  This format is commonly used for 3D printers and computer-generated objects and many programs exist for generating and manipulating these files and represented objects.  AutoDesk Fusion 360 is a freely-available CAD program I have used for generating test objects.  
+
+Code exists in the repository to read STL files and then generate SMLM point clouds with these as the ground truth.  Function \texttt{.\textbackslash GenerateTestDataFromSTLFile.m} loads a defined STL file (using \texttt{.\textbackslash stlread.m}), scales by user-defined factor, shifts center of mass to defined position, and then generates N points randomly positioned on the loaded surface.  These then constitute the `emitter' locations.  
+
+Function \texttt{.\textbackslash pointsToSMLMPointCloud.m} generates detection events around these emitters.  The user supplies the (x,y,z) coordinates of all emitter locations, along with the number of emitters, the mean number of detection events per emitter, and the number of detected photons and localization precision distribution to sample for this dataset.  The actual number of detection events for a given emitter is chosen as a Poisson-distributed random number with the specified mean.  The number of detected photons and localization precision distribution is pulled from an example experimental dataset (loaded using \texttt{.\textbackslash Import1File.m}).  Those simulated points whose position falls outside the specified ROI bounds are removed using \texttt{.\textbackslash enforceROIBounds.m}.  This action concludes the simulation actions, yielding a simulated 3D SMLM dataset for further processing.
+
+\subsection{Experimentally-relevant parameters}
+
+Within the input parameters of the simulation code, there are select variables with direct experimental corollaries. These following parameters (and \texttt{.\textbackslash MeshFitting3d.m} variable names) would be most useful in simulating various experimental outcomes:
+
+\begin{enumerate}
+	\item Emitter density (\texttt{nPoints}) - Currently defined as number of emitters per dataset.  Most relevant if converted from emitters per $\mu m^{2}$ of surface in test object.  Experimentally this pertains to specificity of label molecule, efficiency of labeling, and acquisition duration. 
+	\item Detections per emitter (\texttt{nDetectsPerPoint}) - Mean number of detection events per molecule specified.  This value can be modulated experimentally by acquisition buffer chemistry, laser power, and fluorophore selection.
+	\item Localization precision (implicit in \texttt{exampleDataFile}) - Values for these distributions are given \textit{via} an example data set.  It would be straightforward to model the necessary distribution as a log-Gaussian with given mean and width, or by manipulating the provided values by some scalar factor.  Experimentally the precision is a function of photons collected per detection event, which is a function of the laser power, buffer chemistry, fluorophore, and acquisition camera parameters chosen. 
+	\item Off-target labeling (currently not included in 3D analysis) - The density of emitters or false positive detection events randomly distributed through the simulated ROI.  Experimentally a function of specificity of label molecule, buffer chemistry, and acquisition camera parameters chosen. 
+\end{enumerate}
+
+The inter-dependence of these parameters on the same experimental conditions makes the joint analysis of these values interesting.  For example, a given label could have high specificity, high localization precision (low values), but low emitter density and number of detections per emitter.  Another label could have lower specificity and precision, but higher emitter density and detections per emitter.  Any label could trade localization precision for additional detections per emitter (or the opposite - fewer detections per emitter but each at a higher precision) by tuning buffer chemistry and acquisition parameters.  
+
+It is not clear which, if any, of these options is most effective to yield the highest-resolution surface as output of the next step.  One goal of this study is to determine which parameters are most essential to yield the best dataset for subsequent analysis.  
+
+\section{Data Processing}
+
+Data processing requires as input a 3D point cloud and a few parameters highlighted below.  The output is a mesh representation of the reconstructed surface. 
+
+\subsection{Algorithm description}
+
+\subsubsection{2D point cloud fitting}
+
+The reconstruction algorithm follows the scheme outlined in \cite{lee2000curve}. Starting with an unsorted point cloud, a minmum spanning tree (\textit{via} the Delaunay triangulation) is calculated.  This acyclic graph connects all points while minimizing the total distance traversed by all edges.  From this, the shortest path along the minimum spanning tree is calculated between the two most distant points in within this graph. The ordered position of these points is a trajectory through the dataset roughly approximating a central path through the point cloud.  This path is smoothed and sub-sampled to more closely approximate a smooth path through the enter of the point cloud.  
+
+\subsubsection{3D $\rightarrow$ 2D planes}
+
+The above portion of the algorithm can be performed on N dimensional data, but scales poorly with a large number of points and edges.  The Prim algorithm used in MATLAB has scaling $O(E*log(N))$, where $E$ is the number of edges and $N$ the number of points in the minimum span tree.  SMLM datasets can have millions of points in the full 3D dataset, so downwampling or parcellating the calculations is prudent. 
+
+Here this is accomplished by approximating the 3D surface as a set of 2D lines of intersection between the point cloud and perpendicular sampling planes.  In a single instance, a set of points close to the plane intersecting the point cloud is collapsed into a 2D plane.  This 2D point cloud is fit using the algorithm above.  The resulting reconstructed and smoothed curve, with points in 3D space representing 2D curve on intersecting plane, is returned.  This repeats at a user-specified spacing along this axis, followed by the same calculation but along the perpendicular axis.  In practice this is repeated along two more orthogonal axes, but at $\frac{\pi}{4}$ radians rotated from the first two axes.  The set of all reconstructed and smoothed curves is carried forward. 
+
+\subsubsection{2D fit planes $\rightarrow$ 3D volume}
+
+From here, the surface could be passed to a surface reconstruction algorithm.  However, sampling along a third axis, orthogonal to all intersecting planes, has not occurred.  To avoid losing information due to not sampling in this direction, a further calculation is performed. 
+
+Though originally motivated by desiring a somewhat isotropically-sampled point cloud for the surface reconstruction, it is not clear how necessary this step truly is.  It may be better to remove the Z resampling step.  This would simplify calculations while retaining the emitter density information still maintained in the intersecting plane analysis.  However, the point cloud entering the surface reconstruction step may be more noisy.  One aspect of this project should evaluate these two options to see if continuing with the resampling step here is required.  
+
+The assembled set of all reconstructed 2D intersection lines (resampled or no) is carried forward for surface reconstruction.
+
+
+\subsubsection{Surface reconstruction}
+
+Surface reconstruction on the smoothed point cloud is accomplished using Poisson reconstruction \cite{kazhdan2006poisson} in MeshLab.  This is called through a MATLAB script invoking the MeshLab command line interface. 
+
+The surface reconstruction algorithm returns a set of points and connectivity constituting a reconstructed surface.  This reconstructed surface is the final output of the calculation and should best-approximate the ground truth object sampled through the SMLM point cloud. 
+
+\section{Results}
+
+\section{References}
+\bibliography{smlm3dmeshfitting}
+	
+\end{document}

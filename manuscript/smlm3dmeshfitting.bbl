@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+
+\bibitem{lee2000curve}
+In-Kwon Lee.
+\newblock Curve reconstruction from unorganized points.
+\newblock {\em Computer aided geometric design}, 17(2):161--177, 2000.
+
+\bibitem{kazhdan2006poisson}
+Michael Kazhdan, Matthew Bolitho, and Hugues Hoppe.
+\newblock Poisson surface reconstruction.
+\newblock In {\em Proceedings of the fourth Eurographics symposium on Geometry
+  processing}, volume~7, 2006.
+
+\end{thebibliography}

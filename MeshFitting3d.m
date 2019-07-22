@@ -6,6 +6,9 @@ sizeX = 10000; % nm
 sizeY = 10000; % nm
 sizeZ = 10000; % nm
 
+%-------------------------------------
+% Simulation parameters
+%-------------------------------------
 nPoints = 40000; % Number of emitters to generate
 nDetectsPerPoint = 12; % mean number of detection events per emitter, poisson distributed
 
@@ -21,6 +24,9 @@ template.File = 'C:\Users\Rusty Nicovich\Documents\MATLAB\meshFitting\parametric
 template.Scale = 0.0005; % Scaling factor for native STL file size -> size for this simulation. 
 template.Center = [5000, 5000, 3000]; % Location of center of mass of STL file in simulated space
 
+%-------------------------------------
+% Analysis parameters
+%-------------------------------------
 % Meridian cutting and 2D point cloud approximation
 xSlice = 60; % Thickness of single slice, in nm
 subsampleStep = 10; % Subsample of fitted curve, in points
