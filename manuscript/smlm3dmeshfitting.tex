@@ -1,9 +1,11 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \author{Rusty Nicovich}
 \title{Surface mesh fitting of 3D SMLM Datasets}
 
@@ -55,7 +57,42 @@ SMLM data simulation proceeds by:
 	\item Outputting the list of detection events to a file or array.
 \end{enumerate}
 
-These steps proceed for both 2D and 3D simulation.  Currently 3D simulation only is supported by the repo, but 2D could be included if desired.
+
+\begin{figure}
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/groundTruthcurve.png}
+		\caption[Step1]{Ground truth shape.\newline}
+		\label{fig:simStep1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/groundTruthcurveAndPoints.png}
+		\caption[Step2]{Emitters (green) sparsely scattered around ground truth shape with additional points randomly distributed.}
+		\label{fig:simStep2}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/groundTruthAndSimDat.png}
+		\caption[Step3]{Detection events (gray) localized around each simulated emitter.\\}
+		\label{fig:simStep3}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/HistogramOfPrecisions.png}
+		\caption[Step4]{Histogram of localization precision of simulated detection events, drawn from a distribution of experimental values, with scaling.}
+		\label{fig:simStep4}
+	\end{subfigure}
+
+\caption{Steps for simulating a SMLM datset.}
+\label{fig:smlmSimulation2D}
+\end{figure}
+
+
+These steps, represented in Figure \ref{fig:smlmSimulation2D}, proceed for both 2D and 3D simulation.  Currently 3D simulation only is supported by the repo, but 2D could be included if desired.
 
 \subsection{3D point clouds based on test surfaces}
 
@@ -88,11 +125,15 @@ Data processing requires as input a 3D point cloud and a few parameters highligh
 
 \subsubsection{2D point cloud fitting}
 
-The reconstruction algorithm follows the scheme outlined in \cite{lee2000curve}. Starting with an unsorted point cloud, a minmum spanning tree (\textit{via} the Delaunay triangulation) is calculated.  This acyclic graph connects all points while minimizing the total distance traversed by all edges.  From this, the shortest path along the minimum spanning tree is calculated between the two most distant points in within this graph. The ordered position of these points is a trajectory through the dataset roughly approximating a central path through the point cloud.  This path is smoothed and sub-sampled to more closely approximate a smooth path through the enter of the point cloud.  
+The reconstruction algorithm follows the scheme outlined in \cite{lee2000curve}. Starting with an unsorted point cloud, a minimum spanning tree (\textit{via} the Delaunay triangulation) is calculated.  This acyclic graph connects all points while minimizing the total distance traversed by all edges.  From this, the shortest path along the minimum spanning tree is calculated between the two most distant points in within this graph. The ordered position of these points is a trajectory through the dataset roughly approximating a central path through the point cloud.  This path is smoothed and sub-sampled to more closely approximate a smooth path through the enter of the point cloud.  Note : this smoothing step as implemented is somewhat crude and could possibly be improved for higher-fidelity reconstructions. 
+
+In the implementation provided, the function \texttt{meshfigAndSmooth2d.m} calculates each 2D point cloud reconstruction using the steps above. This is called within the function \texttt{fitPointSetLoop.m}, which loops through all intersecting planes along a given axis.  
+
+A special case exists where a complex object is intersected along a plane at a location that results in two or more distinct 2D point clouds.  The step(s) between these point clouds along the smoothed path calculated above is significantly longer than those in the remainder of the step size distribution.  These exceptionally long linkages should not persist in the analysis and are detected by the \texttt{rosinThreshold.m} function.  This function returns the threshold value for a `long' step in a set of smoothed paths.  The \texttt{splitByLargeDistance.m} function then separates the curve containing these distant point clouds into individual reconstruction curves.  
 
 \subsubsection{3D $\rightarrow$ 2D planes}
 
-The above portion of the algorithm can be performed on N dimensional data, but scales poorly with a large number of points and edges.  The Prim algorithm used in MATLAB has scaling $O(E*log(N))$, where $E$ is the number of edges and $N$ the number of points in the minimum span tree.  SMLM datasets can have millions of points in the full 3D dataset, so downwampling or parcellating the calculations is prudent. 
+The above portion of the algorithm can be performed on N dimensional data, but scales poorly with a large number of points and edges.  The Prim algorithm used in MATLAB has scaling $O(E*log(N))$, where $E$ is the number of edges and $N$ the number of points in the minimum span tree.  SMLM datasets can have millions of points in the full 3D dataset, so downsampling or parcellating the calculations is prudent. 
 
 Here this is accomplished by approximating the 3D surface as a set of 2D lines of intersection between the point cloud and perpendicular sampling planes.  In a single instance, a set of points close to the plane intersecting the point cloud is collapsed into a 2D plane.  This 2D point cloud is fit using the algorithm above.  The resulting reconstructed and smoothed curve, with points in 3D space representing 2D curve on intersecting plane, is returned.  This repeats at a user-specified spacing along this axis, followed by the same calculation but along the perpendicular axis.  In practice this is repeated along two more orthogonal axes, but at $\frac{\pi}{4}$ radians rotated from the first two axes.  The set of all reconstructed and smoothed curves is carried forward. 
 
