@@ -42,22 +42,22 @@ zSlice = xSlice/2;
 
 
 %% Example 1 - Open surface of sine wave
-[z, zComb, polygonReturn] = meshFitting3DFcn(sizeX, sizeY, sizeZ, nPoints, exampleDataFile, nDetectsPerPoint, ...
-                                                        template, xSlice, subsampleStep, onPoint, ...
-                                                        rotationAroundX, rotationAroundZ, zSlice);
-                                                    
-save('parametricSurfaceOutput.mat');
-
-%% Example 2 - Stanford bunny
-% template.Format = 'stlFile';
-% template.File = 'C:\Users\Rusty Nicovich\Documents\MATLAB\meshFitting\High_Resolution_Stanford_Bunny\FLATFOOT_StanfordBunny_jmil_HIGH_RES_Smoothed.stl';
-% template.Scale = 0.08;
-% template.Center = [5000, 5000, 5000];
 % [z, zComb, polygonReturn] = meshFitting3DFcn(sizeX, sizeY, sizeZ, nPoints, exampleDataFile, nDetectsPerPoint, ...
 %                                                         template, xSlice, subsampleStep, onPoint, ...
 %                                                         rotationAroundX, rotationAroundZ, zSlice);
 %                                                     
-% save('bunnySurfaceOutput.mat');
+% save('parametricSurfaceOutput.mat');
+
+%% Example 2 - Stanford bunny
+template.Format = 'stlFile';
+template.File = 'C:\Users\Rusty Nicovich\Documents\MATLAB\meshFitting\High_Resolution_Stanford_Bunny\FLATFOOT_StanfordBunny_jmil_HIGH_RES_Smoothed.stl';
+template.Scale = 0.08;
+template.Center = [5000, 5000, 5000];
+[z, zComb, polygonReturn, pwOut, gTruth] = meshFitting3DFcn(sizeX, sizeY, sizeZ, nPoints, exampleDataFile, nDetectsPerPoint, ...
+                                                        template, xSlice, subsampleStep, onPoint, ...
+                                                        rotationAroundX, rotationAroundZ, zSlice);
+                                                    
+save('bunnySurfaceOutput.mat');
 
 
 % %% Plot things on calculated surface

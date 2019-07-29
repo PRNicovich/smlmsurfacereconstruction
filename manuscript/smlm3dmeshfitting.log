@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.3)  22 JUL 2019 22:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.3)  28 JUL 2019 22:48
 entering extended mode
 **./smlm3dmeshfitting.tex
 (smlm3dmeshfitting.tex
@@ -333,17 +333,72 @@ LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 
 [2] [3 <./figures/groundTruthcurve.png (PNG copy)> <./figures/groundTruthcurveA
 ndPoints.png (PNG copy)> <./figures/groundTruthAndSimDat.png (PNG copy)> <./fig
-ures/HistogramOfPrecisions.png (PNG copy)>] [4] (smlm3dmeshfitting.bbl)
-[5] (smlm3dmeshfitting.aux)
+ures/HistogramOfPrecisions.png (PNG copy)>]
+<./figures/fitgraph.png, id=26, 480.29437pt x 477.28313pt>
+File: ./figures/fitgraph.png Graphic file (type png)
+<use ./figures/fitgraph.png>
+Package pdftex.def Info: ./figures/fitgraph.png  used on input line 133.
+(pdftex.def)             Requested size: 236.35544pt x 234.8758pt.
+<./figures/fitMinSpan.png, id=27, 482.55281pt x 470.50781pt>
+File: ./figures/fitMinSpan.png Graphic file (type png)
+<use ./figures/fitMinSpan.png>
+Package pdftex.def Info: ./figures/fitMinSpan.png  used on input line 140.
+(pdftex.def)             Requested size: 236.35544pt x 230.4575pt.
+<./figures/fitMinSpanAndSmooth.png, id=28, 483.30562pt x 469.00218pt>
+File: ./figures/fitMinSpanAndSmooth.png Graphic file (type png)
+<use ./figures/fitMinSpanAndSmooth.png>
+Package pdftex.def Info: ./figures/fitMinSpanAndSmooth.png  used on input line 
+147.
+(pdftex.def)             Requested size: 236.35544pt x 229.36223pt.
+<./figures/fitgraphZoom.png, id=29, 489.32813pt x 476.53032pt>
+File: ./figures/fitgraphZoom.png Graphic file (type png)
+<use ./figures/fitgraphZoom.png>
+Package pdftex.def Info: ./figures/fitgraphZoom.png  used on input line 154.
+(pdftex.def)             Requested size: 236.35544pt x 230.17894pt.
+<./figures/rosinThresholdDistribution.png, id=30, 722.7pt x 166.37157pt>
+File: ./figures/rosinThresholdDistribution.png Graphic file (type png)
+<use ./figures/rosinThresholdDistribution.png>
+Package pdftex.def Info: ./figures/rosinThresholdDistribution.png  used on inpu
+t line 171.
+(pdftex.def)             Requested size: 498.97438pt x 114.86757pt.
+<./figures/rosinThresholdPoints.png, id=31, 518.6878pt x 465.23813pt>
+File: ./figures/rosinThresholdPoints.png Graphic file (type png)
+<use ./figures/rosinThresholdPoints.png>
+Package pdftex.def Info: ./figures/rosinThresholdPoints.png  used on input line
+ 177.
+(pdftex.def)             Requested size: 288.88243pt x 259.12598pt.
+<./figures/bunnyCloud.png, id=32, 752.8125pt x 688.07062pt>
+File: ./figures/bunnyCloud.png Graphic file (type png)
+<use ./figures/bunnyCloud.png>
+Package pdftex.def Info: ./figures/bunnyCloud.png  used on input line 193.
+(pdftex.def)             Requested size: 236.35544pt x 216.02945pt.
+<./figures/bunnyMeridians.png, id=33, 868.74562pt x 681.29532pt>
+File: ./figures/bunnyMeridians.png Graphic file (type png)
+<use ./figures/bunnyMeridians.png>
+Package pdftex.def Info: ./figures/bunnyMeridians.png  used on input line 199.
+(pdftex.def)             Requested size: 236.35544pt x 185.3556pt.
+<./figures/reconBunnyCloud.png, id=34, 560.8453pt x 441.14813pt>
+File: ./figures/reconBunnyCloud.png Graphic file (type png)
+<use ./figures/reconBunnyCloud.png>
+Package pdftex.def Info: ./figures/reconBunnyCloud.png  used on input line 206.
+
+(pdftex.def)             Requested size: 341.40141pt x 268.53453pt.
+ [4] [5 <./figures/fitgraph.png (PNG copy)> <./figures/fitMinSpan.png (PNG copy
+)> <./figures/fitMinSpanAndSmooth.png (PNG copy)> <./figures/fitgraphZoom.png (
+PNG copy)>] [6 <./figures/rosinThresholdDistribution.png (PNG copy)> <./figures
+/rosinThresholdPoints.png (PNG copy)>] [7 <./figures/bunnyCloud.png (PNG copy)>
+ <./figures/bunnyMeridians.png (PNG copy)> <./figures/reconBunnyCloud.png (PNG 
+copy)>] (smlm3dmeshfitting.bbl)
+[8] (smlm3dmeshfitting.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4055 strings out of 492945
- 60587 string characters out of 3135485
- 137328 words of memory out of 3000000
- 7889 multiletter control sequences out of 15000+200000
+ 4119 strings out of 492945
+ 62315 string characters out of 3135485
+ 139489 words of memory out of 3000000
+ 7944 multiletter control sequences out of 15000+200000
  12316 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,7n,40p,964b,453s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -358,9 +413,9 @@ m/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on smlm3dmeshfitting.pdf (5 pages, 358148 bytes).
+Output written on smlm3dmeshfitting.pdf (8 pages, 1458210 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 90 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

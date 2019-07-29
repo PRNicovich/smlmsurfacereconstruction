@@ -125,17 +125,89 @@ Data processing requires as input a 3D point cloud and a few parameters highligh
 
 \subsubsection{2D point cloud fitting}
 
-The reconstruction algorithm follows the scheme outlined in \cite{lee2000curve}. Starting with an unsorted point cloud, a minimum spanning tree (\textit{via} the Delaunay triangulation) is calculated.  This acyclic graph connects all points while minimizing the total distance traversed by all edges.  From this, the shortest path along the minimum spanning tree is calculated between the two most distant points in within this graph. The ordered position of these points is a trajectory through the dataset roughly approximating a central path through the point cloud.  This path is smoothed and sub-sampled to more closely approximate a smooth path through the enter of the point cloud.  Note : this smoothing step as implemented is somewhat crude and could possibly be improved for higher-fidelity reconstructions. 
+The reconstruction algorithm follows the scheme outlined in \cite{lee2000curve}. Starting with an unsorted point cloud, a minimum spanning tree (\textit{via} the Delaunay triangulation) is calculated (Figure \ref{fig:fitStep1}).  This acyclic graph connects all points while minimizing the total distance traversed by all edges.  From this, the shortest path along the minimum spanning tree is calculated between the two most distant points in within this graph (Fig \ref{fig:fitStep2}). The ordered position of these points is a trajectory through the dataset roughly approximating a central path through the point cloud.  This path is smoothed and sub-sampled to more closely approximate a smooth path through the enter of the point cloud (Fig \ref{fig:fitStep3} and \ref{fig:fitStep4}).  
+
+\begin{figure}
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/fitgraph.png}
+		\caption[Step1]{Minimum span tree (lines) connecting all points in dataset (circles).}
+		\label{fig:fitStep1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/fitMinSpan.png}
+		\caption[Step2]{Shortest path between most distant pair of points (purple) in the minimum spanning tree.}
+		\label{fig:fitStep2}
+	\end{subfigure}
+	\vskip\baselineskip
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/fitMinSpanAndSmooth.png}
+		\caption[Step3]{Downsampled and smoothed points (red) from shortest path returned in previous step (purple).\\}
+		\label{fig:fitStep3}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/fitgraphZoom.png}
+		\caption[Step4]{Zoom of initial segment in analyzed 2D dataset showing results of previous analysis steps. The initial set of shortest path points skipped prior to first fit point is apparent here.}
+		\label{fig:fitStep4}
+	\end{subfigure}
+	
+	\caption{Steps for simulating a SMLM datset.}
+	\label{fig:smlmFit2D}
+\end{figure}
 
 In the implementation provided, the function \texttt{meshfigAndSmooth2d.m} calculates each 2D point cloud reconstruction using the steps above. This is called within the function \texttt{fitPointSetLoop.m}, which loops through all intersecting planes along a given axis.  
 
-A special case exists where a complex object is intersected along a plane at a location that results in two or more distinct 2D point clouds.  The step(s) between these point clouds along the smoothed path calculated above is significantly longer than those in the remainder of the step size distribution.  These exceptionally long linkages should not persist in the analysis and are detected by the \texttt{rosinThreshold.m} function.  This function returns the threshold value for a `long' step in a set of smoothed paths.  The \texttt{splitByLargeDistance.m} function then separates the curve containing these distant point clouds into individual reconstruction curves.  
+Given the complex shapes under analysis as well as presence of background signals, it is adventageous to remove overly large steps along the smoothed calculated path. Steps along this path which are significantly longer than those in the remainder of the step size distribution are suspicious and should be removed from further analysis.  These exceptionally long linkages are detected by the \texttt{rosinThreshold.m} function.  This function returns the threshold value for a `long' step in a set of smoothed paths.  The \texttt{splitByLargeDistance.m} function then separates the curve containing these distant point clouds into individual reconstruction curves.  
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{.95\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/rosinThresholdDistribution.png}
+		\caption[Step1]{Distribution of steps in all smoothed paths in planes of an example dataset (blue). The Rosin threshold method uses the peak and tail positions of this distribution (x markers) and finds the maximum perpendicular distance from the line connecting these points and the underlying distribution. This point (red circle) is the taken unimodal threshold value.}
+		\label{fig:rosinDistribution}
+	\end{subfigure}
+	\begin{subfigure}[b]{.55\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/rosinThresholdPoints.png}
+		\caption[Step1]{Example smoothed points plane from this dataset. Those steps in red are longer than the Rosin threshold value and should be removed. Connected points sets will be carried forward as separate reconstruction curves.}
+		\label{fig:rosinPoints}
+	\end{subfigure}
+\end{figure}
 
 \subsubsection{3D $\rightarrow$ 2D planes}
 
 The above portion of the algorithm can be performed on N dimensional data, but scales poorly with a large number of points and edges.  The Prim algorithm used in MATLAB has scaling $O(E*log(N))$, where $E$ is the number of edges and $N$ the number of points in the minimum span tree.  SMLM datasets can have millions of points in the full 3D dataset, so downsampling or parcellating the calculations is prudent. 
 
-Here this is accomplished by approximating the 3D surface as a set of 2D lines of intersection between the point cloud and perpendicular sampling planes.  In a single instance, a set of points close to the plane intersecting the point cloud is collapsed into a 2D plane.  This 2D point cloud is fit using the algorithm above.  The resulting reconstructed and smoothed curve, with points in 3D space representing 2D curve on intersecting plane, is returned.  This repeats at a user-specified spacing along this axis, followed by the same calculation but along the perpendicular axis.  In practice this is repeated along two more orthogonal axes, but at $\frac{\pi}{4}$ radians rotated from the first two axes.  The set of all reconstructed and smoothed curves is carried forward. 
+Here this is accomplished by approximating the underlying 3D surface implied by a 3D point cloud (Figure \ref{fig:bunnyCloud}) as a set of 2D lines of intersection between the point cloud and perpendicular sampling planes (Fig \ref{fig:bunnyMeridians}).  In a single instance, a set of points close to the plane intersecting the point cloud is collapsed into a 2D plane.  This 2D point cloud is fit using the algorithm above.  The resulting reconstructed and smoothed curve, with points in 3D space representing 2D curve on intersecting plane, is returned.  This repeats at a user-specified spacing along this axis, followed by the same calculation but along the perpendicular axis.  In practice this is repeated along two more orthogonal axes, but at $\frac{\pi}{4}$ radians rotated from the first two axes.  The set of all reconstructed and smoothed curves is carried forward. 
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/bunnyCloud.png}
+		\caption[Step1]{Example 3D point cloud dataset.}
+		\label{fig:bunnyCloud}
+	\end{subfigure}
+	\begin{subfigure}[b]{.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/bunnyMeridians.png}
+		\caption[Step2]{Reconstructed smoothed curves taken along two perpendicular planes (blur and red, respectively) intersecting the 3D point cloud dataset (gray). Single example curves from each axis highlighted.}
+		\label{fig:bunnyMeridians}
+	\end{subfigure}
+	\vfill
+	\begin{subfigure}[b]{.65\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/reconBunnyCloud.png}
+		\caption[Step3]{Points from reconstructed surface following Poisson reconstruction. Note : this is displayed as a point cloud, but is a reconstructed surface.}
+		\label{fig:bunnyRecon}
+	\end{subfigure}
+\end{figure}
 
 \subsubsection{2D fit planes $\rightarrow$ 3D volume}
 
@@ -150,9 +222,36 @@ The assembled set of all reconstructed 2D intersection lines (resampled or no) i
 
 Surface reconstruction on the smoothed point cloud is accomplished using Poisson reconstruction \cite{kazhdan2006poisson} in MeshLab.  This is called through a MATLAB script invoking the MeshLab command line interface. 
 
-The surface reconstruction algorithm returns a set of points and connectivity constituting a reconstructed surface.  This reconstructed surface is the final output of the calculation and should best-approximate the ground truth object sampled through the SMLM point cloud. 
+The surface reconstruction algorithm returns a set of points and connectivity constituting a reconstructed surface (Fig \ref{fig:bunnyRecon}).  This reconstructed surface is the final output of the calculation and should best-approximate the ground truth object sampled through the SMLM point cloud. 
 
 \section{Results}
+
+Summary of accomplishments to-date:
+\begin{enumerate}
+	\item Implementation of simulated 3D SMLM point clouds based on STL model files.  Operates on open and closed surfaces.
+	\item Algorithm for reconstruction of open or closed surfaces from noisy 3D SMLM point clouds.
+	\item Implementation for reconstruction 
+\end{enumerate}
+
+\section{Continuing to completed project}
+
+A number of improvements remain to see this reconstruction algorithm ready for tackling real and large experimental SMLM point clouds. A working list of these items are detailed below:
+
+\subsection{Software improvements}
+\begin{enumerate}
+	\item Import MeshLab-provided PLY files into MATLAB as surfaces. 
+	\item Support MeshLab parameters as function arguments in \texttt{meshFitting3DFcn.m}.
+	\item Potentially implement new smoothing method based on Lee publication for 2D reconstructed curves.
+\end{enumerate}
+
+\subsection{Algorithm parameterization}
+\begin{enumerate}
+	\item Compare reconstruction performance between Z-resampled point cloud (current implementation) and direct operation of Poisson reconstruction on smoothed 2D reconstructed curve points.
+\end{enumerate}
+
+\subsection{Quantifying performance}
+There is a great need for a means to quantify the performance of the reconstruction algorithm in terms of resolution of feature which can be resolved in the output surface. 
+
 
 \section{References}
 \bibliography{smlm3dmeshfitting}
