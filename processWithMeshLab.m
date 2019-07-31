@@ -2,7 +2,7 @@ function [polygonsOut, varargout] = processWithMeshLab(inputFile, processingScri
 
 meshlabPath = 'C:\program files\vcg\meshlab\meshlabserver.exe';
 
-outputFile = strcat(inputFile(1:(end-4)), '.ply');
+outputFile = strcat(inputFile(1:(end-4)), '.stl');
 
 [~, fb, fc] = fileparts(processingScript);
 
@@ -24,7 +24,8 @@ pause(1);
 fprintf('Reading in file %s\n', outputFile);
 % polygonsOut = readSavedMeshReconstruction('bunnyOutput20181228_02.ply');
 
-polygonsOut = pcread(outputFile);
+% polygonsOut = pcread(outputFile);
+polygonsOut = stlread(outputFile);
 
 if nargout == 2
     varargout{1} = outputFile;
