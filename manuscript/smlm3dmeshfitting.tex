@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{ulem}
 \author{Rusty Nicovich}
 \title{Surface mesh fitting of 3D SMLM Datasets}
 
@@ -203,8 +204,8 @@ Here this is accomplished by approximating the underlying 3D surface implied by 
 	\vfill
 	\begin{subfigure}[b]{.65\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{./figures/reconBunnyCloud.png}
-		\caption[Step3]{Points from reconstructed surface following Poisson reconstruction. Note : this is displayed as a point cloud, but is a reconstructed surface.}
+		\includegraphics[width=\textwidth]{./figures/bunnyRecon+GroundTruty.png}
+		\caption[Step3]{Reconstructed surface (red) with ground truth emitter points shown in black. A perfect reconstruction would yield a surface intersecting all ground truth points.}
 		\label{fig:bunnyRecon}
 	\end{subfigure}
 \end{figure}
@@ -233,15 +234,18 @@ Summary of accomplishments to-date:
 	\item Implementation for reconstruction 
 \end{enumerate}
 
+
+
 \section{Continuing to completed project}
 
 A number of improvements remain to see this reconstruction algorithm ready for tackling real and large experimental SMLM point clouds. A working list of these items are detailed below:
 
 \subsection{Software improvements}
 \begin{enumerate}
-	\item Import MeshLab-provided PLY files into MATLAB as surfaces. 
+	\item \sout{Import MeshLab-provided PLY files into MATLAB as surfaces.} (Completed)
 	\item Support MeshLab parameters as function arguments in \texttt{meshFitting3DFcn.m}.
 	\item Potentially implement new smoothing method based on Lee publication for 2D reconstructed curves.
+	\item Software implementation of the pointillist Fourier shell correlation algorithm. 
 \end{enumerate}
 
 \subsection{Algorithm parameterization}
@@ -250,10 +254,100 @@ A number of improvements remain to see this reconstruction algorithm ready for t
 \end{enumerate}
 
 \subsection{Quantifying performance}
-There is a great need for a means to quantify the performance of the reconstruction algorithm in terms of resolution of feature which can be resolved in the output surface. 
+There is a great need for a means to quantify the performance of the reconstruction algorithm in terms of resolution of feature which can be resolved in the output surface. This could be evaluated with increasing levels of complexity (and usefulness).  Any of these analyses should allow the quantification of the achievable resolution under a given set of point cloud and algorithm parameters.  This should be used to benchmark the optimum algorithm parameters for reconstruction and to inform the cut-off for valid biological interpretation from a given experimental dataset. 
 
+\begin{enumerate}
+	\item \textbf{RMS error relative to ground truth} - When a known input structure is known, the output of the reconstruction can be referenced to this ground truth. This provides a straightforward means to assess how close the reconstruction can match the input structure.  
+	
+	A challenge of comparing two surfaces is finding elements on both surfaces to align for comparison.  A possible implementation would be to take the distance from the ground truth emitter positions (returned as the \texttt{groundTruth} output from \texttt{meshFitting3DFcn}) to the nearest surface element on the returned reconstruction.  If the size of the facets of the reconstructed surface is small, then the distance from a ground truth point to the nearest vertex of the reconstruction surface can be a reasonable approximation of the ground truth point to reconstruction facet distance.  This point-to-point distance is straightforward to calculate with a k nearest neighbor algorithm. 
+		
+	Unfortunately this approach does not directly return any information regarding the feature size of the surface relative to the error observed. It is expected that areas of high spatial frequency in the underlying structure would have higher error in the reconstruction relative to `flatter' regions. 
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{./figures/bunnyReconEars.png}
+		\caption[Step3]{Zoom of reconstructed surface and ground truth points appearing in \ref{fig:bunnyRecon}.  Note that at the sharp point of the ears, or the area of highest extent and spatial frequency, the reconstructed surface does not match the extent of the ground truth surface.}
+		\label{fig:bunnyReconModulation}
+	\end{figure}
+	
+	\item \textbf{Modulation depth in a periodic surface} - Given the nature of the 2D and 3D reconstruction methods, it is anticipated that features below the reconstruction resolution will be truncated or `cut off'.  With a simulated surface the spatial frequency of the underlying features can be easily parameterized.  With this it is possible to design a series of tests in which the spatial frequency is increased while evaluating the surface reconstruction error at each point.  
+	
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-400_period-1256.png}
+			\caption[Step1]{}
+			\label{fig:modDepth400_fDiv10}
+		\end{subfigure}
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-400_period-837.png}
+			\caption[Step2]{}
+			\label{fig:modDepth400_fDiv15}
+		\end{subfigure}
+		\begin{subfigure}[b]{.3\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-400_period-628.png}
+			\caption[Step2]{}
+			\label{fig:modDEpth400_fDiv20}
+		\end{subfigure}
+	
+	\vskip\baselineskip
+	
+			\begin{subfigure}[b]{.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-800_period-1256.png}
+		\caption[Step1]{}
+		\label{fig:modDepth800_fDiv10}
+	\end{subfigure}
+	\begin{subfigure}[b]{.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-800_period-837.png}
+		\caption[Step2]{}
+		\label{fig:modDepth800_fDiv15}
+	\end{subfigure}
+	\begin{subfigure}[b]{.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-800_period-628.png}
+		\caption[Step2]{}
+		\label{fig:modDEpth800_fDiv20}
+	\end{subfigure}
 
-\section{References}
+	\vskip\baselineskip
+	
+	\begin{subfigure}[b]{.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-1200_period-1256.png}
+		\caption[Step1]{}
+		\label{fig:modDepth1200_fDiv10}
+	\end{subfigure}
+	\begin{subfigure}[b]{.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-1200_period-837.png}
+		\caption[Step2]{}
+		\label{fig:modDepth1200_fDiv15}
+	\end{subfigure}
+	\begin{subfigure}[b]{.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./figures/FitPoints2d_pts-1200_period-628.png}
+		\caption[Step2]{}
+		\label{fig:modDEpth1200_fDiv20}
+	\end{subfigure}	
+
+\caption{Fidelity of reconstruction is affected by spatial frequency of input structure relative to number of sampled points. A cosine function of indicated spatial frequency defines ground truth structure and fit using described algorithm for single-plane reconstruction (see Figures \ref{fig:smlmSimulation2D} and \ref{fig:smlmFit2D}). \ref{fig:modDepth400_fDiv10} - \ref{fig:modDEpth400_fDiv20} simulated with 400 points around this ground truth, \ref{fig:modDepth800_fDiv10} - \ref{fig:modDEpth800_fDiv20} with 800 points, and \ref{fig:modDepth1200_fDiv10} - \ref{fig:modDEpth1200_fDiv20} with 1200 points.  The reconstructed curve (red) shows clipping at the extrema when sampling is insufficient for the spatial frequency in question.  A similar response would be expected for a number of experimental parameters. } \end{figure}
+	
+	
+	One approach is to generate a series of surfaces following a sine or square wave pattern with a given spatial frequency.  Measuring the reconstruction error as a function of a simulation or algorithm parameter would yield a response function for that combination of parameters.  Taking each parameter in turn, along with the spatial frequency of the simulated surface, would yield a multidimensional response function for the algorithm.  These results can be used as a lookup table against which experimental data and interpretation can be referenced.
+	
+	\item \textbf{Fourier ring correlation} - The Fourier ring correlation algorithm (\cite{nieuwenhuizen2013measuring}, \cite{salas2017angular}) provides a means to directly estimate the achievable resolution from a given dataset.  These give a direct readout of response as a function of spatial frequency from a single experimental reconstruction without any ground truth reference. This form will be most useful for quantifying the interpretation level possible for an experimental dataset directly.  Such a readout would efficiently parameterize results from simulations as well. 
+
+	Two-dimensional implementations of the Fourier ring correlation have been long used for quantifying cryo-EM and crystallography reconstructions. Three-dimensional forms (the Fourier shell correlation) is a straightforward extension of the two-dimensional form.  Image-based forms are most common and not necessarily the optimal form for pointillist datasets.
+	
+	A recent preprint describes a pointillist form of the Fourier ring correlation algorithm (\cite{8759279}).  This would be the most direct route to quantifying resolution in both simulated and experimental datasets.  At the moment a freely-available software implementation is not in hand.  If not possible to recapitulate this analysis from the described methods then it may be possible to discuss with the preprint authors regarding their software.
+	
+\end{enumerate}
+
 \bibliography{smlm3dmeshfitting}
 	
 \end{document}

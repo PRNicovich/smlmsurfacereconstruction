@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.3)  28 JUL 2019 22:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.3)  25 AUG 2019 22:23
 entering extended mode
 **./smlm3dmeshfitting.tex
 (smlm3dmeshfitting.tex
@@ -169,21 +169,34 @@ Package caption3 Info: TeX engine: e-TeX on input line 64.
 )
 \c@subfigure=\count105
 \c@subtable=\count106
-) (smlm3dmeshfitting.aux)
+)
+("C:\Users\Rusty Nicovich\AppData\Roaming\MiKTeX\2.9\tex/latex/ulem\ulem.sty"
+\UL@box=\box29
+\UL@hyphenbox=\box30
+\UL@skip=\skip46
+\UL@hook=\toks23
+\UL@height=\dimen129
+\UL@pe=\count107
+\UL@pixel=\dimen130
+\ULC@box=\box31
+Package: ulem 2012/05/18
+\ULdepth=\dimen131
+)
+(smlm3dmeshfitting.aux)
 \openout1 = `smlm3dmeshfitting.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -223,17 +236,17 @@ LaTeX Font Info:    ... okay on input line 14.
 ("C:\Users\Rusty Nicovich\AppData\Roaming\MiKTeX\2.9\tex/context/base/mkii\supp
 -pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count107
-\scratchdimen=\dimen129
-\scratchbox=\box29
-\nofMPsegments=\count108
-\nofMParguments=\count109
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count110
-\MPscratchDim=\dimen130
-\MPnumerator=\count111
-\makeMPintoPDFobject=\count112
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count108
+\scratchdimen=\dimen132
+\scratchbox=\box32
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen133
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
+\everyMPtoPDFconversion=\toks25
 ) ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -279,17 +292,17 @@ G,.JBIG2,.JB2,.eps]
 )
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 15.
+LaTeX Font Info:    Try loading font information for U+msa on input line 16.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 15.
+LaTeX Font Info:    Try loading font information for U+msb on input line 16.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (107.1939pt too wide) in paragraph at lines 19--20
+Overfull \hbox (107.1939pt too wide) in paragraph at lines 20--21
 \OT1/cmr/m/n/10 ref-er-enced in this doc-u-ment is avail-able in the as-so-ci-a
 ted Git repos-i-tory, lo-cated at https://bitbucket.org/nicovich12/smlmmeshfitt
 ing/src/master/. 
@@ -301,35 +314,35 @@ ing/src/master/.
 <./figures/groundTruthcurve.png, id=10, 480.29437pt x 472.01344pt>
 File: ./figures/groundTruthcurve.png Graphic file (type png)
 <use ./figures/groundTruthcurve.png>
-Package pdftex.def Info: ./figures/groundTruthcurve.png  used on input line 64.
+Package pdftex.def Info: ./figures/groundTruthcurve.png  used on input line 65.
 
 (pdftex.def)             Requested size: 236.35544pt x 232.28253pt.
 <./figures/groundTruthcurveAndPoints.png, id=11, 481.8pt x 467.49657pt>
 File: ./figures/groundTruthcurveAndPoints.png Graphic file (type png)
 <use ./figures/groundTruthcurveAndPoints.png>
 Package pdftex.def Info: ./figures/groundTruthcurveAndPoints.png  used on input
- line 71.
+ line 72.
 (pdftex.def)             Requested size: 236.35544pt x 229.33925pt.
 <./figures/groundTruthAndSimDat.png, id=12, 484.81125pt x 472.01344pt>
 File: ./figures/groundTruthAndSimDat.png Graphic file (type png)
 <use ./figures/groundTruthAndSimDat.png>
 Package pdftex.def Info: ./figures/groundTruthAndSimDat.png  used on input line
- 78.
+ 79.
 (pdftex.def)             Requested size: 236.35544pt x 230.12183pt.
 <./figures/HistogramOfPrecisions.png, id=13, 520.94624pt x 469.755pt>
 File: ./figures/HistogramOfPrecisions.png Graphic file (type png)
 <use ./figures/HistogramOfPrecisions.png>
 Package pdftex.def Info: ./figures/HistogramOfPrecisions.png  used on input lin
-e 85.
+e 86.
 (pdftex.def)             Requested size: 236.35544pt x 213.1296pt.
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 101
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 102
 .
-LaTeX Font Info:    No file OMScmtt.fd. on input line 101.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 102.
 
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbackslash' on input line 101.
+(Font)              for symbol `textbackslash' on input line 102.
 
 [2] [3 <./figures/groundTruthcurve.png (PNG copy)> <./figures/groundTruthcurveA
 ndPoints.png (PNG copy)> <./figures/groundTruthAndSimDat.png (PNG copy)> <./fig
@@ -337,71 +350,143 @@ ures/HistogramOfPrecisions.png (PNG copy)>]
 <./figures/fitgraph.png, id=26, 480.29437pt x 477.28313pt>
 File: ./figures/fitgraph.png Graphic file (type png)
 <use ./figures/fitgraph.png>
-Package pdftex.def Info: ./figures/fitgraph.png  used on input line 133.
+Package pdftex.def Info: ./figures/fitgraph.png  used on input line 134.
 (pdftex.def)             Requested size: 236.35544pt x 234.8758pt.
 <./figures/fitMinSpan.png, id=27, 482.55281pt x 470.50781pt>
 File: ./figures/fitMinSpan.png Graphic file (type png)
 <use ./figures/fitMinSpan.png>
-Package pdftex.def Info: ./figures/fitMinSpan.png  used on input line 140.
+Package pdftex.def Info: ./figures/fitMinSpan.png  used on input line 141.
 (pdftex.def)             Requested size: 236.35544pt x 230.4575pt.
 <./figures/fitMinSpanAndSmooth.png, id=28, 483.30562pt x 469.00218pt>
 File: ./figures/fitMinSpanAndSmooth.png Graphic file (type png)
 <use ./figures/fitMinSpanAndSmooth.png>
 Package pdftex.def Info: ./figures/fitMinSpanAndSmooth.png  used on input line 
-147.
+148.
 (pdftex.def)             Requested size: 236.35544pt x 229.36223pt.
 <./figures/fitgraphZoom.png, id=29, 489.32813pt x 476.53032pt>
 File: ./figures/fitgraphZoom.png Graphic file (type png)
 <use ./figures/fitgraphZoom.png>
-Package pdftex.def Info: ./figures/fitgraphZoom.png  used on input line 154.
+Package pdftex.def Info: ./figures/fitgraphZoom.png  used on input line 155.
 (pdftex.def)             Requested size: 236.35544pt x 230.17894pt.
 <./figures/rosinThresholdDistribution.png, id=30, 722.7pt x 166.37157pt>
 File: ./figures/rosinThresholdDistribution.png Graphic file (type png)
 <use ./figures/rosinThresholdDistribution.png>
 Package pdftex.def Info: ./figures/rosinThresholdDistribution.png  used on inpu
-t line 171.
+t line 172.
 (pdftex.def)             Requested size: 498.97438pt x 114.86757pt.
 <./figures/rosinThresholdPoints.png, id=31, 518.6878pt x 465.23813pt>
 File: ./figures/rosinThresholdPoints.png Graphic file (type png)
 <use ./figures/rosinThresholdPoints.png>
 Package pdftex.def Info: ./figures/rosinThresholdPoints.png  used on input line
- 177.
+ 178.
 (pdftex.def)             Requested size: 288.88243pt x 259.12598pt.
 <./figures/bunnyCloud.png, id=32, 752.8125pt x 688.07062pt>
 File: ./figures/bunnyCloud.png Graphic file (type png)
 <use ./figures/bunnyCloud.png>
-Package pdftex.def Info: ./figures/bunnyCloud.png  used on input line 193.
+Package pdftex.def Info: ./figures/bunnyCloud.png  used on input line 194.
 (pdftex.def)             Requested size: 236.35544pt x 216.02945pt.
 <./figures/bunnyMeridians.png, id=33, 868.74562pt x 681.29532pt>
 File: ./figures/bunnyMeridians.png Graphic file (type png)
 <use ./figures/bunnyMeridians.png>
-Package pdftex.def Info: ./figures/bunnyMeridians.png  used on input line 199.
+Package pdftex.def Info: ./figures/bunnyMeridians.png  used on input line 200.
 (pdftex.def)             Requested size: 236.35544pt x 185.3556pt.
-<./figures/reconBunnyCloud.png, id=34, 560.8453pt x 441.14813pt>
-File: ./figures/reconBunnyCloud.png Graphic file (type png)
-<use ./figures/reconBunnyCloud.png>
-Package pdftex.def Info: ./figures/reconBunnyCloud.png  used on input line 206.
-
-(pdftex.def)             Requested size: 341.40141pt x 268.53453pt.
+<./figures/bunnyRecon+GroundTruty.png, id=34, 761.09344pt x 718.18312pt>
+File: ./figures/bunnyRecon+GroundTruty.png Graphic file (type png)
+<use ./figures/bunnyRecon+GroundTruty.png>
+Package pdftex.def Info: ./figures/bunnyRecon+GroundTruty.png  used on input li
+ne 207.
+(pdftex.def)             Requested size: 341.40141pt x 322.16026pt.
  [4] [5 <./figures/fitgraph.png (PNG copy)> <./figures/fitMinSpan.png (PNG copy
 )> <./figures/fitMinSpanAndSmooth.png (PNG copy)> <./figures/fitgraphZoom.png (
 PNG copy)>] [6 <./figures/rosinThresholdDistribution.png (PNG copy)> <./figures
 /rosinThresholdPoints.png (PNG copy)>] [7 <./figures/bunnyCloud.png (PNG copy)>
- <./figures/bunnyMeridians.png (PNG copy)> <./figures/reconBunnyCloud.png (PNG 
-copy)>] (smlm3dmeshfitting.bbl)
-[8] (smlm3dmeshfitting.aux)
+ <./figures/bunnyMeridians.png (PNG copy)> <./figures/bunnyRecon+GroundTruty.pn
+g (PNG copy)>]
+<./figures/bunnyReconEars.png, id=49, 761.09344pt x 718.18312pt>
+File: ./figures/bunnyReconEars.png Graphic file (type png)
+<use ./figures/bunnyReconEars.png>
+Package pdftex.def Info: ./figures/bunnyReconEars.png  used on input line 268.
+(pdftex.def)             Requested size: 262.61894pt x 247.81728pt.
+<./figures/FitPoints2d_pts-400_period-1256.png, id=50, 606.1044pt x 521.7894pt>
+
+File: ./figures/FitPoints2d_pts-400_period-1256.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-400_period-1256.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-400_period-1256.png  used on
+ input line 279.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-400_period-837.png, id=51, 606.1044pt x 521.7894pt>
+File: ./figures/FitPoints2d_pts-400_period-837.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-400_period-837.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-400_period-837.png  used on 
+input line 285.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-400_period-628.png, id=52, 606.1044pt x 521.7894pt>
+File: ./figures/FitPoints2d_pts-400_period-628.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-400_period-628.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-400_period-628.png  used on 
+input line 291.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-800_period-1256.png, id=53, 606.1044pt x 521.7894pt>
+
+File: ./figures/FitPoints2d_pts-800_period-1256.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-800_period-1256.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-800_period-1256.png  used on
+ input line 300.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-800_period-837.png, id=54, 606.1044pt x 521.7894pt>
+File: ./figures/FitPoints2d_pts-800_period-837.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-800_period-837.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-800_period-837.png  used on 
+input line 306.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-800_period-628.png, id=55, 606.1044pt x 521.7894pt>
+File: ./figures/FitPoints2d_pts-800_period-628.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-800_period-628.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-800_period-628.png  used on 
+input line 312.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-1200_period-1256.png, id=56, 606.1044pt x 521.7894pt
+>
+File: ./figures/FitPoints2d_pts-1200_period-1256.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-1200_period-1256.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-1200_period-1256.png  used o
+n input line 321.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-1200_period-837.png, id=57, 606.1044pt x 521.7894pt>
+
+File: ./figures/FitPoints2d_pts-1200_period-837.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-1200_period-837.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-1200_period-837.png  used on
+ input line 327.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+<./figures/FitPoints2d_pts-1200_period-628.png, id=58, 606.1044pt x 521.7894pt>
+
+File: ./figures/FitPoints2d_pts-1200_period-628.png Graphic file (type png)
+<use ./figures/FitPoints2d_pts-1200_period-628.png>
+Package pdftex.def Info: ./figures/FitPoints2d_pts-1200_period-628.png  used on
+ input line 333.
+(pdftex.def)             Requested size: 157.57297pt x 135.65407pt.
+ [8]
+(smlm3dmeshfitting.bbl) [9 <./figures/bunnyReconEars.png (PNG copy)>] [10 <./fi
+gures/FitPoints2d_pts-400_period-1256.png (PNG copy)> <./figures/FitPoints2d_pt
+s-400_period-837.png (PNG copy)> <./figures/FitPoints2d_pts-400_period-628.png 
+(PNG copy)> <./figures/FitPoints2d_pts-800_period-1256.png (PNG copy)> <./figur
+es/FitPoints2d_pts-800_period-837.png (PNG copy)> <./figures/FitPoints2d_pts-80
+0_period-628.png (PNG copy)> <./figures/FitPoints2d_pts-1200_period-1256.png (P
+NG copy)> <./figures/FitPoints2d_pts-1200_period-837.png (PNG copy)> <./figures
+/FitPoints2d_pts-1200_period-628.png (PNG copy)>] (smlm3dmeshfitting.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4119 strings out of 492945
- 62315 string characters out of 3135485
- 139489 words of memory out of 3000000
- 7944 multiletter control sequences out of 15000+200000
- 12316 words of font info for 48 fonts, out of 3000000 for 9000
+ 4273 strings out of 492945
+ 65995 string characters out of 3135485
+ 140550 words of memory out of 3000000
+ 8083 multiletter control sequences out of 15000+200000
+ 12422 words of font info for 49 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,7n,40p,964b,453s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,7n,40p,964b,522s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKT
@@ -413,9 +498,9 @@ m/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on smlm3dmeshfitting.pdf (8 pages, 1458210 bytes).
+Output written on smlm3dmeshfitting.pdf (10 pages, 5580886 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

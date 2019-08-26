@@ -11,4 +11,25 @@ Michael Kazhdan, Matthew Bolitho, and Hugues Hoppe.
 \newblock In {\em Proceedings of the fourth Eurographics symposium on Geometry
   processing}, volume~7, 2006.
 
+\bibitem{nieuwenhuizen2013measuring}
+Robert~PJ Nieuwenhuizen, Keith~A Lidke, Mark Bates, Daniela~Leyton Puig, David
+  Gr{\"u}nwald, Sjoerd Stallinga, and Bernd Rieger.
+\newblock Measuring image resolution in optical nanoscopy.
+\newblock {\em Nature methods}, 10(6):557, 2013.
+
+\bibitem{salas2017angular}
+Desir{\'e}e Salas, Antoine Le~Gall, Jean-Bernard Fiche, Alessandro Valeri,
+  Yonggang Ke, Patrick Bron, Gaetan Bellot, and Marcelo Nollmann.
+\newblock Angular reconstitution-based 3d reconstructions of nanomolecular
+  structures from superresolution light-microscopy images.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  114(35):9273--9278, 2017.
+
+\bibitem{8759279}
+T.~{Pham}, E.~{Soubies}, D.~{Sage}, and M.~{Unser}.
+\newblock Closed-form expression of the fourier ring-correlation for
+  single-molecule localization microscopy.
+\newblock In {\em 2019 IEEE 16th International Symposium on Biomedical Imaging
+  (ISBI 2019)}, pages 321--324, April 2019.
+
 \end{thebibliography}
