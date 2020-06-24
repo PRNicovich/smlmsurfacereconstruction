@@ -27,6 +27,10 @@ switch axisToUse
     case 2
         sliceAx = 1;
         passDims = [2, 3, 4, 5];
+        
+    case 3
+        sliceAx = 3;
+        passDims = [1, 2, 4, 5];
 end
 
 

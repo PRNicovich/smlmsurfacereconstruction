@@ -41,12 +41,18 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     % Main fitting function along single axis
 
     ptRange = [max(zRot(:,(1:3))); min(zRot(:,1:3))];
-
+    
     xPiecewise = fitPointSetLoop(zRot, ptRange(2,1), ptRange(1,1), xSlice, 2, subsampleStep, onPoint);
-
+    
+    
     %% Loop over slices in y
     % Repeat above section with same parameters but on perpendicular axis.
     yPiecewise = fitPointSetLoop(zRot, ptRange(2,2), ptRange(1,2), xSlice, 1, subsampleStep, onPoint);
+    
+    %% Loop over slices in z
+    % Repeat above section with same parameters but on perpendicular axis.
+    zPiecewise = fitPointSetLoop(zRot, ptRange(2,2), ptRange(1,2), xSlice, 3, subsampleStep, onPoint);
+
 
     %% Loop over slices between X and Y axes
     % Rotate point cloud by 45 degrees and go again.  This is done to add
@@ -59,6 +65,7 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     ptRange = [max(rotPts(:,(1:3))); min(rotPts(:,1:3))];
     bPiecewise = fitPointSetLoop(rotPts, ptRange(2,1), ptRange(1,1), xSlice, 2, subsampleStep, onPoint);
     cPiecewise = fitPointSetLoop(rotPts, ptRange(2,2), ptRange(1,2), xSlice, 1, subsampleStep, onPoint);
+    dPiecewise = fitPointSetLoop(rotPts, ptRange(2,2), ptRange(1,2), xSlice, 3, subsampleStep, onPoint);
 
     %% Double-check for erroneously long links and split if needed
     % Determine threshold for splitting
@@ -66,11 +73,13 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     % Do both and then take mean as best choice
     [threshX, splitDistX] = rosinThreshold(xPiecewise, 'doPlot', true);
     [threshY, splitDistY] = rosinThreshold(yPiecewise, 'doPlot', true);
+    [threshZ, splitDistZ] = rosinThreshold(zPiecewise, 'doPlot', true);
 
     [threshB, splitDistB] = rosinThreshold(bPiecewise, 'doPlot', true);
     [threshC, splitDistC] = rosinThreshold(cPiecewise, 'doPlot', true);
+    [threshD, splitDistD] = rosinThreshold(dPiecewise, 'doPlot', true);
 
-    threshVal = (threshX + threshY + threshB + threshC)/4;
+    threshVal = (threshX + threshY + threshZ + threshB + threshC + threshD)/6;
 
     %%
 
@@ -80,33 +89,39 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
 
     xPiecewise = splitByLargeDistance(xPiecewise, splitDistX, threshVal);
     yPiecewise = splitByLargeDistance(yPiecewise, splitDistY, threshVal);
+    zPiecewise = splitByLargeDistance(zPiecewise, splitDistZ, threshVal);
+    
     bPiecewise = splitByLargeDistance(bPiecewise, splitDistB, threshVal);
     cPiecewise = splitByLargeDistance(cPiecewise, splitDistC, threshVal);
+    dPiecewise = splitByLargeDistance(dPiecewise, splitDistD, threshVal);
     
-    pwOut = {xPiecewise, yPiecewise, bPiecewise, cPiecewise};
+    pwOut = {xPiecewise, yPiecewise, zPiecewise, bPiecewise, cPiecewise, dPiecewise};
 
-    %% Z slice fitted curves
-    % Generate regularly-spaced points that hopefully don't have too much trash
-    % in the set
+%     %% Z slice fitted curves
+%     % Generate regularly-spaced points that hopefully don't have too much trash
+%     % in the set
+% 
+%     % Make all connected point pairs into a single variable
+%     % No way this isn't done better in a graph class, but don't know how to
+%     % implement that....
 
-    % Make all connected point pairs into a single variable
-    % No way this isn't done better in a graph class, but don't know how to
-    % implement that....
-
-    zVect = ptRange(2,3) : zSlice : ptRange(1,3);
-
-    zPiecewise = cell(numel(zVect), 2);
-    zP = [];
-    zP2 = [];
-
-    for k = 1:numel(zVect)
-
-        zP = [zP; generateZSlicePoints(xPiecewise, zVect(k), 'x')];
-        zP = [zP; generateZSlicePoints(yPiecewise, zVect(k), 'y')];
-        zP2 = [zP2; generateZSlicePoints(bPiecewise, zVect(k), 'x')];
-        zP2 = [zP2; generateZSlicePoints(cPiecewise, zVect(k), 'y')];    
-
-    end
+%     zVect = ptRange(2,3) : zSlice : ptRange(1,3);
+% 
+%     zPiecewise = cell(numel(zVect), 2);
+%     zP = [];
+%     zP2 = [];
+% 
+%     for k = 1:numel(zVect)
+% 
+%         zP = [zP; generateZSlicePoints(xPiecewise, zVect(k), 'x')];
+%         zP = [zP; generateZSlicePoints(yPiecewise, zVect(k), 'y')];
+%         zP2 = [zP2; generateZSlicePoints(bPiecewise, zVect(k), 'x')];
+%         zP2 = [zP2; generateZSlicePoints(cPiecewise, zVect(k), 'y')];    
+% 
+%     end
+try    
+    zP = [vertcat(xPiecewise{:}); vertcat(yPiecewise{:}); vertcat(zPiecewise{:})];
+    zP2 = [vertcat(bPiecewise{:}); vertcat(cPiecewise{:}); vertcat(dPiecewise{:})];
 
     %% Un-rotate point cloud
     % Rotate back zP2
@@ -114,7 +129,11 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     zComb = [zP; zP2];
     % Rotate back rest
     zComb = rotateCloudAroundAxis(zComb, -rotationAroundX, 'x');
-
+catch
+    assignin('base', 'xPiecewise', xPiecewise);
+    assignin('base', 'yPiecewise', yPiecewise);
+    assignin('base', 'zPiecewise', zPiecewise);
+end
     %% Unskew original point cloud
     % Undo previous rotation to return to original point cloud orientation. 
 
@@ -176,7 +195,7 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     %% Generate a fitted mesh to the extracted points
     % Can pass off to MeshLab to do the crunching here
 
-    dlmwrite('ptsOut20190527.xyz', zComb, 'delimiter', '\t');
+    dlmwrite('ptsOut20200618.xyz', zComb, 'delimiter', '\t');
 
     %%
     % In MeshLab
@@ -190,7 +209,7 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     % 
     scriptFile = modifyMeshLabScript('poissonRecon.mlx', 'saveInPlace', false, 'poissonDepth', 9);
 
-    polygonReturn = processWithMeshLab('ptsOut20190527.xyz', scriptFile); % Works!
+    polygonReturn = processWithMeshLab('ptsOut20200618.xyz', scriptFile); % Works!
     delete(scriptFile);
 
 end

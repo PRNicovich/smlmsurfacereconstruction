@@ -28,7 +28,10 @@ template.Center = [5000, 5000, 3000]; % Location of center of mass of STL file i
 % Analysis parameters
 %-------------------------------------
 % Meridian cutting and 2D point cloud approximation
-xSlice = 60; % Thickness of single slice, in nm
+xSlice = 200; % Thickness of single slice, in nm
+
+% need a 'slice width' parameter here or similar 
+
 subsampleStep = 10; % Subsample of fitted curve, in points
 onPoint = 5; % Start curve on this point.  Avoids deviation from center of point clound from using min span tree to find ridge
 
