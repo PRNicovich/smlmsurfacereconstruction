@@ -2,6 +2,8 @@
 
 Reconstruct a surface mesh from single molecule localization microscopy (SMLM) data.  Take an arbitrary structure (as STL file), generate a simulated 3D SMLM dataset around it, then denoise and reconstruct a surface.  
 
+![smlmReconBunny](/output/smlm3dreconBunny.gif)
+
 Code does following steps:
 *  Take in reference structure as STL file
 *  Read example SMLM data file (nb - Nikon, Zeiss, and some versions of ThunderSTORM output supported)
@@ -16,7 +18,7 @@ Code does following steps:
 
 ## Requires:
 
-MeshLab:
+MeshLab
 https://www.meshlab.net/
 
 ICP_finite.m
@@ -26,3 +28,4 @@ Tested on MATLAB 2019a on PC (Intel i5; 8 GB RAM)
 
 ## Distribution:
 Code is open for those who wish to explore this approach for 3D sMLM reconstructions.  It is currently not published elsewhere.  If you intend to publish, please contact regarding attribution. Released with GNU license.
+
