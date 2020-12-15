@@ -17,6 +17,7 @@ if nargin == 14
     tempFolder = varargin{12};
     reconScript = varargin{13};
     reconParams = varargin{14};
+    meshlabPath = varargin{15}
 elseif nargin == 1
     
     meshObj = varargin{1};
@@ -36,6 +37,7 @@ elseif nargin == 1
     tempFolder = meshObj.inputs.tempFolder;
     reconScript = meshObj.inputs.scripts.poissonRecon;
     reconParams = meshObj.inputs.scripts.params;
+    meshlabPath = meshObj.inputs.scripts.meshlabPath;
 
 end
 
@@ -231,7 +233,7 @@ end
     % 
     scriptFile = modifyMeshLabScript(reconScript, 'saveInPlace', false, 'poissonDepth', reconParams.poissonDepth);
 
-    [polygonReturn, ~, meshProps] = processWithMeshLab(fullfile(tempFolder, 'ptsOut20200618.xyz'), scriptFile); % Works!
+    [polygonReturn, ~, meshProps] = processWithMeshLab(fullfile(tempFolder, 'ptsOut20200618.xyz'), scriptFile, meshlabPath); % Works!
     delete(scriptFile);
     
     if nargout == 6

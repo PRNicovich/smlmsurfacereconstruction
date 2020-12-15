@@ -1,0 +1,152 @@
+MeshLabServer: Failed loading of E:/MATLAB/output/ptsOut20200618.xyz from dir E:/MATLAB/output
+It was not possible to import mesh E:/MATLAB/output/ptsOut20200618.xyz into MeshLabServer. The program will exit
+ Mesh E:/MATLAB/output/ptsOut20200618.xyz loaded has 78648 vn 0 fn
+output mesh  E:/MATLAB/output/ptsOut20200618.stl
+Apply FilterScript: 'E:/MATLAB/private/tp5b31e51f_9b1e_4bc4_9697_78548ba4b9ca.mlx'
+Starting Script of 5 actionsfilter: Compute normals for point sets
+filter: Surface Reconstruction: Screened Poisson
+filter Surface Reconstruction: Screened Poisson not foundFailed to apply script file E:/MATLAB/private/tp5b31e51f_9b1e_4bc4_9697_78548ba4b9ca.mlx
+Mesh E:/MATLAB/output/ptsOut20200618.xyz loaded has 78648 vn 0 fn
+output mesh  E:/MATLAB/output/ptsOut20200618.stl
+Apply FilterScript: 'E:/MATLAB/private/tp5b31e51f_9b1e_4bc4_9697_78548ba4b9ca.mlx'
+Starting Script of 5 actionsfilter: Compute normals for point sets
+filter: Surface Reconstruction: Screened Poisson
+filter: Discrete Curvatures
+Computed Mean Curvature
+Curvature Range: -0.320873 0.320794 (Used 90 percentile -0.007547 0.008816) 
+filter: Smooth: Laplacian Vertex Color
+Computed Mean Curvature
+Curvature Range: -0.320873 0.320794 (Used 90 percentile -0.007547 0.008816) 
+filter: Compute Geometric Measures
+Computed Mean Curvature
+Curvature Range: -0.320873 0.320794 (Used 90 percentile -0.007547 0.008816) 
+Mesh Bounding Box Size 6941.070801  5343.054688  6709.005859
+Mesh Bounding Box Diag 11033.469727 
+Mesh Bounding Box min 2106.760254  2752.671631  2373.495117
+Mesh Bounding Box max 9047.831055  8095.726562  9082.500977
+Mesh Surface Area is 113888456.000000
+Mesh Total Len of 473253 Edges is 14660106.000000 Avg Len 30.977314
+Mesh Total Len of 473253 Edges is 14660106.000000 Avg Len 30.977314 (including faux edges))
+Thin shell (faces) barycenter:  5143.729004  4973.248535  4963.019531
+Vertices barycenter  5147.069336  4961.494141  4967.341797
+Mesh Volume  is 65171214336.000000
+Center of Mass  is 5395.212891 4875.029297 4679.702637
+Inertia Tensor is :
+    | 169785090912550912.000000  -1733343842402304.000000  55165040986161152.000000 |
+    | -1733343842402304.000000  277241582065811456.000000  -4522058859937792.000000 |
+    | 55165040986161152.000000  -4522058859937792.000000  213337175985487872.000000 |
+Principal axes are :
+    |  0.826596  -0.007669  -0.562743 |
+    |  0.555576   0.170755   0.813743 |
+    | -0.089850   0.985284  -0.145406 |
+axis momenta are :
+    | 132244955031666688.000000  250051793382277120.000000  278066593743765504.000000 |
+Mesh  saved as E:/MATLAB/output/ptsOut20200618.stl (157755 vn 315502 fn)
+Mesh E:/MATLAB/output/ptsOut20200618.xyz loaded has 79053 vn 0 fn
+output mesh  E:/MATLAB/output/ptsOut20200618.stl
+Apply FilterScript: 'E:/MATLAB/tpc37f215a_3899_4f63_8068_40b99dd8b619.mlx'
+Starting Script of 5 actionsfilter: Compute normals for point sets
+filter: Surface Reconstruction: Screened Poisson
+filter: Discrete Curvatures
+Computed Mean Curvature
+Curvature Range: -0.020140 0.018777 (Used 90 percentile -0.008827 0.007754) 
+filter: Smooth: Laplacian Vertex Color
+Computed Mean Curvature
+Curvature Range: -0.020140 0.018777 (Used 90 percentile -0.008827 0.007754) 
+filter: Compute Geometric Measures
+Computed Mean Curvature
+Curvature Range: -0.020140 0.018777 (Used 90 percentile -0.008827 0.007754) 
+Mesh Bounding Box Size 6911.590820  5333.784668  6709.197266
+Mesh Bounding Box Diag 11010.571289 
+Mesh Bounding Box min 2115.791016  2754.740234  2369.947266
+Mesh Bounding Box max 9027.381836  8088.524902  9079.144531
+Mesh Surface Area is 113854784.000000
+Mesh Total Len of 482565 Edges is 14779836.000000 Avg Len 30.627659
+Mesh Total Len of 482565 Edges is 14779836.000000 Avg Len 30.627659 (including faux edges))
+Thin shell (faces) barycenter:  5143.966309  4972.501953  4961.568359
+Vertices barycenter  5146.387695  4955.280273  4958.451172
+Mesh Volume  is -65160278016.000000
+Center of Mass  is 5395.855957 4874.914551 4679.582520
+Inertia Tensor is :
+    | -169649060708352000.000000  1776852532199424.000000  -55089316417765376.000000 |
+    | 1776852532199424.000000  -277163001344163840.000000  4473942609756160.000000 |
+    | -55089316417765376.000000  4473942609756160.000000  -213265020534915072.000000 |
+Principal axes are :
+    |  0.089590  -0.985457   0.144392 |
+    | -0.555192  -0.169774  -0.814211 |
+    |  0.826883  -0.007220  -0.562328 |
+axis momenta are :
+    | -277980041562816512.000000  -249896298386292736.000000  -132200854307471360.000000 |
+Mesh  saved as E:/MATLAB/output/ptsOut20200618.stl (160857 vn 321710 fn)
+Mesh E:/MATLAB/output/ptsOut20200618.xyz loaded has 79053 vn 0 fn
+output mesh  E:/MATLAB/output/ptsOut20200618.stl
+Apply FilterScript: 'E:/MATLAB/private/tpf11bb70e_4885_4aa5_baf2_f01c50c12663.mlx'
+Starting Script of 5 actionsfilter: Compute normals for point sets
+filter: Surface Reconstruction: Screened Poisson
+filter: Discrete Curvatures
+Computed Mean Curvature
+Curvature Range: -0.020144 0.018767 (Used 90 percentile -0.008829 0.007752) 
+filter: Smooth: Laplacian Vertex Color
+Computed Mean Curvature
+Curvature Range: -0.020144 0.018767 (Used 90 percentile -0.008829 0.007752) 
+filter: Compute Geometric Measures
+Computed Mean Curvature
+Curvature Range: -0.020144 0.018767 (Used 90 percentile -0.008829 0.007752) 
+Mesh Bounding Box Size 6911.590820  5333.784668  6709.197266
+Mesh Bounding Box Diag 11010.571289 
+Mesh Bounding Box min 2115.791016  2754.740234  2369.947266
+Mesh Bounding Box max 9027.381836  8088.524902  9079.144531
+Mesh Surface Area is 113854760.000000
+Mesh Total Len of 482565 Edges is 14779883.000000 Avg Len 30.627754
+Mesh Total Len of 482565 Edges is 14779883.000000 Avg Len 30.627754 (including faux edges))
+Thin shell (faces) barycenter:  5143.968262  4972.506836  4961.569336
+Vertices barycenter  5146.387695  4955.280273  4958.451172
+Mesh Volume  is -65160278016.000000
+Center of Mass  is 5395.855957 4874.914551 4679.582520
+Inertia Tensor is :
+    | -169649026348613632.000000  1776834278588416.000000  -55089333597634560.000000 |
+    | 1776834278588416.000000  -277162966984425472.000000  4473926772064256.000000 |
+    | -55089333597634560.000000  4473926772064256.000000  -213264986175176704.000000 |
+Principal axes are :
+    |  0.089590  -0.985457   0.144392 |
+    | -0.555192  -0.169774  -0.814211 |
+    |  0.826883  -0.007220  -0.562328 |
+axis momenta are :
+    | -277980041562816512.000000  -249896298386292736.000000  -132200854307471360.000000 |
+Mesh  saved as E:/MATLAB/output/ptsOut20200618.stl (160857 vn 321710 fn)
+Mesh E:/MATLAB/output/ptsOut20200618.xyz loaded has 78350 vn 0 fn
+output mesh  E:/MATLAB/output/ptsOut20200618.stl
+Apply FilterScript: 'E:/MATLAB/tp1583e224_c74d_47ee_a858_7757e4566be5.mlx'
+Starting Script of 5 actionsfilter: Compute normals for point sets
+filter: Surface Reconstruction: Screened Poisson
+filter: Discrete Curvatures
+Computed Mean Curvature
+Curvature Range: -0.329431 0.419687 (Used 90 percentile -0.008284 0.007298) 
+filter: Smooth: Laplacian Vertex Color
+Computed Mean Curvature
+Curvature Range: -0.329431 0.419687 (Used 90 percentile -0.008284 0.007298) 
+filter: Compute Geometric Measures
+Computed Mean Curvature
+Curvature Range: -0.329431 0.419687 (Used 90 percentile -0.008284 0.007298) 
+Mesh Bounding Box Size 6934.624023  5349.770996  6706.203613
+Mesh Bounding Box Diag 11030.966797 
+Mesh Bounding Box min 2109.080811  2749.174316  2373.337402
+Mesh Bounding Box max 9043.705078  8098.945312  9079.541016
+Mesh Surface Area is 113629848.000000
+Mesh Total Len of 437937 Edges is 14065003.000000 Avg Len 32.116501
+Mesh Total Len of 437937 Edges is 14065003.000000 Avg Len 32.116501 (including faux edges))
+Thin shell (faces) barycenter:  5144.555664  4972.342285  4959.699707
+Vertices barycenter  5152.469238  4956.384766  4948.835449
+Mesh Volume  is -65159933952.000000
+Center of Mass  is 5395.634766 4875.063477 4679.419922
+Inertia Tensor is :
+    | -169703177296281600.000000  1743539826327552.000000  -55153715157401600.000000 |
+    | 1743539826327552.000000  -277154153711534080.000000  4510513450975232.000000 |
+    | -55153715157401600.000000  4510513450975232.000000  -213313278787452928.000000 |
+Principal axes are :
+    |  0.089949  -0.985270   0.145439 |
+    | -0.555335  -0.170840  -0.813890 |
+    |  0.826748  -0.007559  -0.562521 |
+axis momenta are :
+    | -277979113849880576.000000  -249999154263097344.000000  -132192255782944768.000000 |
+Mesh  saved as E:/MATLAB/output/ptsOut20200618.stl (145981 vn 291958 fn)

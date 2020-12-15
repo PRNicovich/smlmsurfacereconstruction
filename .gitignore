@@ -7,4 +7,5 @@
 *.log
 *.gz
 *.tex
+*.asv
 ./meshlabScripts

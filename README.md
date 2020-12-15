@@ -18,8 +18,7 @@ Code does following steps:
 
 ## Requires:
 
-MeshLab
-https://www.meshlab.net/
+MeshLab 2020.07 or other version with meshlabserver and Screened Poisson reconstruction supported.
 
 ICP_finite.m
 https://www.mathworks.com/matlabcentral/fileexchange/24301-finite-iterative-closest-point

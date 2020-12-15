@@ -8,7 +8,7 @@ function analysis = analyzeMeshFittingResults(inputs, results, analysis)
     % Volume of recon vs reference
     % Read out of file for reference
     scriptFile = modifyMeshLabScript(analysis.scripts.objectProperties, 'saveInPlace', false);
-    [~, ~, meshProps] = processWithMeshLab(inputs.template.File, scriptFile); % 
+    [~, ~, meshProps] = processWithMeshLab(inputs.template.File, scriptFile, inputs.scripts.meshlabPath); % 
     delete(scriptFile);
     % Remember to scale
     analysis.volume.ref = meshProps.MeshVolume;
@@ -35,12 +35,14 @@ function analysis = analyzeMeshFittingResults(inputs, results, analysis)
     scriptFile = modifyMeshLabScript(analysis.scripts.hausdorff, 'saveInPlace', false);
     inputFiles = {inputs.template.File, analysis.alignedVolume.alignedVolFile};
 
-    [analysis.displacement.alignedToReference, ~] = processWithMeshLab(inputFiles, scriptFile, {}, fullfile(inputs.tempFolder, 'hausDorfAliToRef.ply')); % 
+    [analysis.displacement.alignedToReference, ~] = processWithMeshLab(inputFiles, scriptFile, inputs.scripts.meshlabPath, ...
+        {}, fullfile(inputs.tempFolder, 'hausDorfAliToRef.ply')); % 
 
     % Distance from Reference -> calc'd and aligned volume
     inputFiles = {analysis.alignedVolume.alignedVolFile, inputs.template.File};
 
-    [analysis.displacement.referenceToAligned, ~] = processWithMeshLab(inputFiles, scriptFile, {}, fullfile(inputs.tempFolder, 'hausDorfRefToAli.ply')); % 
+    [analysis.displacement.referenceToAligned, ~] = processWithMeshLab(inputFiles, scriptFile, inputs.scripts.meshlabPath, ...
+        {}, fullfile(inputs.tempFolder, 'hausDorfRefToAli.ply')); % 
     delete(scriptFile);
 
     %%%%%%
@@ -50,10 +52,12 @@ function analysis = analyzeMeshFittingResults(inputs, results, analysis)
     scriptFile = modifyMeshLabScript(analysis.scripts.curvature, 'saveInPlace', false);
 
     [analysis.curvature.aligned, ~] = processWithMeshLab(analysis.alignedVolume.alignedVolFile, ...
-                                        scriptFile, {}, fullfile(inputs.tempFolder, 'curvatureAliVol.ply')); % 
+                                        scriptFile, inputs.scripts.meshlabPath, ...
+                                        {}, fullfile(inputs.tempFolder, 'curvatureAliVol.ply')); % 
 
     [analysis.curvature.reference, ~] = processWithMeshLab(inputs.template.File, ...
-                                        scriptFile, {}, fullfile(inputs.tempFolder, 'curvatureAliVol.ply')); % 
+                                        scriptFile, inputs.scripts.meshlabPath, ...
+                                        {}, fullfile(inputs.tempFolder, 'curvatureAliVol.ply')); % 
 
     delete(scriptFile);
 end

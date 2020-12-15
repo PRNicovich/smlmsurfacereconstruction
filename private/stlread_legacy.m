@@ -1,4 +1,4 @@
-function varargout = stlread(file)
+function varargout = stlread_legacy(file)
 % STLREAD imports geometry from an STL file into MATLAB.
 %    FV = STLREAD(FILENAME) imports triangular faces from the ASCII or binary
 %    STL file idicated by FILENAME, and returns the patch struct FV, with fields

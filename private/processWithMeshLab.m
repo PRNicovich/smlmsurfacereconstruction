@@ -1,4 +1,4 @@
-function [polygonsOut, varargout] = processWithMeshLab(inputFile, processingScript, varargin)
+function [polygonsOut, varargout] = processWithMeshLab(inputFile, processingScript, meshlabPath, varargin)
 % Process data using meshlabserver command line interface
 % Inputs : inputFile - file(s) to process.  String or cell array of strings
 %          processingScript - .mlx file with script to use. Output of
@@ -8,7 +8,7 @@ function [polygonsOut, varargout] = processWithMeshLab(inputFile, processingScri
 %                     {2} output file name.  input.STL if not provided or empty.
 %              
 
-    meshlabPath = 'C:\program files\vcg\meshlab\meshlabserver.exe';
+%     meshlabPath = 'C:\program files\vcg\meshlab\meshlabserver.exe';
 
     [~, fb, fc] = fileparts(processingScript);
 
@@ -20,7 +20,7 @@ function [polygonsOut, varargout] = processWithMeshLab(inputFile, processingScri
     
     % Check if output file name is provided
     outFileSpecified = false;
-    if nargin == 4
+    if nargin == 5
        outputFile = varargin{2};
        outFileString = sprintf('%s -m sa vq', outputFile);
        outFileSpecified = true;
@@ -70,7 +70,7 @@ function [polygonsOut, varargout] = processWithMeshLab(inputFile, processingScri
     fprintf('Reading in file %s\n', outputFile);
 
     if endsWith(outputFile, '.stl')
-        polygonsOut = stlread(outputFile);
+        polygonsOut = stlread_legacy(outputFile);
     elseif endsWith(outputFile, '.ply')
         polygonsOut = readSavedMeshReconstruction(outputFile);
     else
@@ -79,7 +79,7 @@ function [polygonsOut, varargout] = processWithMeshLab(inputFile, processingScri
 
     fprintf('Parsing propsFile %s\n', propsFile);
     % Read and parse propsFile
-    if nargin >= 3
+    if nargin >= 4
         if isempty(varargin{1})
             propsOut = [];
         else

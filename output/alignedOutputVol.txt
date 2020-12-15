@@ -1,0 +1,62 @@
+Mesh E:/MATLAB/output/alignedOutputVol.stl loaded has 145980 vn 291956 fn
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/output/hausDorfRefToAli.ply
+vertex quality, Apply FilterScript: 'E:/MATLAB/private/tp1c8aee24_35d6_4d3e_adb5_a92de3530b43.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 43318 pts (rng: 0) on scaledStanfordBunny.stl searched closest on alignedOutputVol.stl
+     min : 0.000366   max 102.716309   mean : 7.780142   RMS : 11.794212
+Values w.r.t. BBox Diag (11007.538086)
+     min : 0.000000   max 0.009331   mean : 0.000707   RMS : 0.001071
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 43318 pts (rng: 0) on scaledStanfordBunny.stl searched closest on alignedOutputVol.stl
+     min : 0.000366   max 102.716309   mean : 7.780142   RMS : 11.794212
+Values w.r.t. BBox Diag (11007.538086)
+     min : 0.000000   max 0.009331   mean : 0.000707   RMS : 0.001071
+
+Quality Range: 0.000366 102.716309; Used (102.716309 0.000366) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 43318 pts (rng: 0) on scaledStanfordBunny.stl searched closest on alignedOutputVol.stl
+     min : 0.000366   max 102.716309   mean : 7.780142   RMS : 11.794212
+Values w.r.t. BBox Diag (11007.538086)
+     min : 0.000000   max 0.009331   mean : 0.000707   RMS : 0.001071
+
+Quality Range: 0.000366 102.716309; Used (102.716309 0.000366) percentile (100.000000 0.000000) 
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/output/hausDorfRefToAli.ply (43318 vn 86632 fn)
+Mesh E:/MATLAB/output/alignedOutputVol.stl loaded has 145980 vn 291956 fn
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/output/hausDorfRefToAli.ply
+vertex quality, Apply FilterScript: 'E:/MATLAB/private/tp08446d1f_ca7d_4dbd_aee8_12eb5ab9f183.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 43318 pts (rng: 0) on scaledStanfordBunny.stl searched closest on alignedOutputVol.stl
+     min : 0.000366   max 102.716309   mean : 7.780142   RMS : 11.794212
+Values w.r.t. BBox Diag (11007.538086)
+     min : 0.000000   max 0.009331   mean : 0.000707   RMS : 0.001071
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 43318 pts (rng: 0) on scaledStanfordBunny.stl searched closest on alignedOutputVol.stl
+     min : 0.000366   max 102.716309   mean : 7.780142   RMS : 11.794212
+Values w.r.t. BBox Diag (11007.538086)
+     min : 0.000000   max 0.009331   mean : 0.000707   RMS : 0.001071
+
+Quality Range: 0.000366 102.716309; Used (102.716309 0.000366) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 43318 pts (rng: 0) on scaledStanfordBunny.stl searched closest on alignedOutputVol.stl
+     min : 0.000366   max 102.716309   mean : 7.780142   RMS : 11.794212
+Values w.r.t. BBox Diag (11007.538086)
+     min : 0.000000   max 0.009331   mean : 0.000707   RMS : 0.001071
+
+Quality Range: 0.000366 102.716309; Used (102.716309 0.000366) percentile (100.000000 0.000000) 
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/output/hausDorfRefToAli.ply (43318 vn 86632 fn)
+Mesh E:/MATLAB/output/alignedOutputVol.stl loaded has 145980 vn 291956 fn
+output mesh  E:/MATLAB/output/curvatureAliVol.ply
+vertex quality, Apply FilterScript: 'E:/MATLAB/private/tp45219599_e387_4068_aa61_fd8e1f62c96b.mlx'
+Starting Script of 1 actionsfilter: Colorize curvature (APSS)
+Mesh has no per vertex radius. Computed and added using default neighbourhood
+Mesh E:/MATLAB/output/alignedOutputVol.stl saved as E:/MATLAB/output/curvatureAliVol.ply (145980 vn 291956 fn)

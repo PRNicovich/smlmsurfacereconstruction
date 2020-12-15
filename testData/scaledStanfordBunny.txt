@@ -381,3 +381,221 @@ output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
 Apply FilterScript: 'E:/MATLAB/tpbe6d1cbe_8db1_4053_9cde_d1068e218c95.mlx'
 Starting Script of 1 actionsfilter: Compute Geometric Measures
 filter Compute Geometric Measures not foundFailed to apply script file E:/MATLAB/tpbe6d1cbe_8db1_4053_9cde_d1068e218c95.mlx
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/private/tp6fb43847_5f4d_476a_8350_65ede7ad6b01.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/private/tpc951afe7_c600_44ef_a94d_7f3933aec76c.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/private/tp37929ff3_1b41_49ff_9a64_1600fd545cf2.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/private/tp2b905ee9_57c6_4ddd_bd54_fe7178d23bfe.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/private/tpd7e4f797_ff60_4e8b_bcd6_320b4aabcab3.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh E:/MATLAB/output/alignedOutputVol.stl loaded has 145980 vn 291956 fn
+output mesh  E:/MATLAB/output/hausDorfAliToRef.ply
+vertex quality, Apply FilterScript: 'E:/MATLAB/private/tp1c8aee24_35d6_4d3e_adb5_a92de3530b43.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 145980 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 73.648926   mean : 6.027056   RMS : 7.956284
+Values w.r.t. BBox Diag (11030.997070)
+     min : 0.000000   max 0.006677   mean : 0.000546   RMS : 0.000721
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 145980 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 73.648926   mean : 6.027056   RMS : 7.956284
+Values w.r.t. BBox Diag (11030.997070)
+     min : 0.000000   max 0.006677   mean : 0.000546   RMS : 0.000721
+
+Quality Range: 0.000000 73.648926; Used (73.648926 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 145980 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 73.648926   mean : 6.027056   RMS : 7.956284
+Values w.r.t. BBox Diag (11030.997070)
+     min : 0.000000   max 0.006677   mean : 0.000546   RMS : 0.000721
+
+Quality Range: 0.000000 73.648926; Used (73.648926 0.000000) percentile (100.000000 0.000000) 
+Mesh E:/MATLAB/output/alignedOutputVol.stl saved as E:/MATLAB/output/hausDorfAliToRef.ply (145980 vn 291956 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/private/tpbd99ad4d_8f60_4b49_9e70_53572b522059.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh E:/MATLAB/output/alignedOutputVol.stl loaded has 145980 vn 291956 fn
+output mesh  E:/MATLAB/output/hausDorfAliToRef.ply
+vertex quality, Apply FilterScript: 'E:/MATLAB/private/tp08446d1f_ca7d_4dbd_aee8_12eb5ab9f183.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 145980 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 73.648926   mean : 6.027056   RMS : 7.956284
+Values w.r.t. BBox Diag (11030.997070)
+     min : 0.000000   max 0.006677   mean : 0.000546   RMS : 0.000721
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 145980 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 73.648926   mean : 6.027056   RMS : 7.956284
+Values w.r.t. BBox Diag (11030.997070)
+     min : 0.000000   max 0.006677   mean : 0.000546   RMS : 0.000721
+
+Quality Range: 0.000000 73.648926; Used (73.648926 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 145980 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 73.648926   mean : 6.027056   RMS : 7.956284
+Values w.r.t. BBox Diag (11030.997070)
+     min : 0.000000   max 0.006677   mean : 0.000546   RMS : 0.000721
+
+Quality Range: 0.000000 73.648926; Used (73.648926 0.000000) percentile (100.000000 0.000000) 
+Mesh E:/MATLAB/output/alignedOutputVol.stl saved as E:/MATLAB/output/hausDorfAliToRef.ply (145980 vn 291956 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  E:/MATLAB/output/curvatureAliVol.ply
+vertex quality, Apply FilterScript: 'E:/MATLAB/private/tp45219599_e387_4068_aa61_fd8e1f62c96b.mlx'
+Starting Script of 1 actionsfilter: Colorize curvature (APSS)
+Mesh has no per vertex radius. Computed and added using default neighbourhood
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl saved as E:/MATLAB/output/curvatureAliVol.ply (43318 vn 86632 fn)

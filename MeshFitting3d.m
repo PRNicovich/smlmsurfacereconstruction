@@ -1,36 +1,76 @@
+% Demo script for SMLM surface reconstruction
 % Run with current working directory as .\smlmmeshfitting\
-
-% Requires:
-% stlread
-% stlwrite
-% ICP_finite
-
-% Hausdorff distance
-% Zachary Danziger (2020). 
-% Hausdorff Distance (https://www.mathworks.com/matlabcentral/fileexchange/26738-hausdorff-distance), 
-% MATLAB Central File Exchange. Retrieved July 8, 2020.
-% MATLAB 2019a
 
 %% Input parameters
 
 meshObj = meshfitter();
 
-%% Example 2 - Stanford bunny
-
-% Transform Stanford bunny model to scale, position desired
+%% Example - Stanford bunny recon from STL file
 
 meshObj = meshFitting3DFcn(meshObj);
 
-%%
+%% Analysis on resulting mesh
 
 meshObj.analysis = analyzeMeshFittingResults(meshObj.inputs, meshObj.results, meshObj.analysis);
 
-%%
+%% Save output
 save('bunnySurfaceOutput.mat', 'meshObj');
 
+%% Plots
+% Input in black. Point cloud in blue. Output in red.
 
-% %% Plot things on calculated surface
-% figure(4)
-% plot3(zComb(:,1), zComb(:,2), zComb(:,3), 'k.', 'markersize', 1)
+
+% Plot input model
+figure(1);
+title("Input model");
+tri = triangulation(meshObj.inputs.groundTruth.faces, ...
+    meshObj.inputs.groundTruth.vertices(:,1), ...
+    meshObj.inputs.groundTruth.vertices(:,2), ...
+    meshObj.inputs.groundTruth.vertices(:,3));
+triPlot = trisurf(tri, 'edgecolor', 'none');
+set(triPlot, 'faceColor', [0.6 0.6 0.6]);
+material('dull');
+camlight('headlight');
+set(triPlot, ...
+    'FaceLighting',    'gouraud', ...
+    'AmbientStrength', 0.001)
+lightHand = findobj('parent', gca, 'type', 'light');
+axis('image');
+title("Input model");
+xlabel('X position (nm)');
+ylabel('Y position (nm)');
+zlabel('Z position (nm)');
+
+figure(2);
+ptsCld = plot3(meshObj.results.z(:,1), ...
+               meshObj.results.z(:,2), ...
+               meshObj.results.z(:,3), '.', ...
+               'markersize', 1, 'markeredgecolor', [0.2, 0.4, 1]);
+axis('image');
+grid('on');
+title("Point cloud");
+xlabel('X position (nm)');
+ylabel('Y position (nm)');
+zlabel('Z position (nm)');
+
+
+figure(3);
+tri = triangulation(meshObj.results.polygonReturn.faces, ...
+    meshObj.results.polygonReturn.vertices(:,1), ...
+    meshObj.results.polygonReturn.vertices(:,2), ...
+    meshObj.results.polygonReturn.vertices(:,3));
+triPlot = trisurf(tri, 'edgecolor', 'none');
+set(triPlot, 'faceColor', [1 0.6 0.4]);
+material('dull');
+camlight('headlight');
+set(triPlot, ...
+    'FaceLighting',    'gouraud', ...
+    'AmbientStrength', 0.001)
+lightHand = findobj('parent', gca, 'type', 'light');
+axis('image');
+title("Surface reconstruction");
+xlabel('X position (nm)');
+ylabel('Y position (nm)');
+zlabel('Z position (nm)');
 
 
