@@ -1,0 +1,383 @@
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tpc6780786_1068_4997_b34b_08668b25c760.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 156183 vn 312362 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply
+Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp3ecb33f0_3b5e_4912_83f1_dca196be37d8.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply (156183 vn 312362 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 156183 vn 312362 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply
+Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tpa16f1dd1_f4f7_4e73_88f4_cc3b8579108b.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply (156183 vn 312362 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 156183 vn 312362 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply
+Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tpa20ae97d_a40e_4011_989c_3cb4bffeaa78.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply (156183 vn 312362 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 156183 vn 312362 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tpbcb28523_0ee6_46a0_a393_5ec51807a595.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply (156183 vn 312362 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 156183 vn 312362 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp5a3b439e_68e7_469f_aa47_9c4291343dc2.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/hausDorf.ply (156183 vn 312362 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 156183 vn 312362 fn
+output mesh  C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorf.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp33beecdc_0f0b_4869_a721_55b4a87964b9.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorf.ply (156183 vn 312362 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 156183 vn 312362 fn
+output mesh  C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorf.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp1db7a420_d8d0_4bad_b9dd_f9ab232f173f.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 59.642578   mean : 6.158700   RMS : 8.030807
+Values w.r.t. BBox Diag (11004.586914)
+     min : 0.000000   max 0.005420   mean : 0.000560   RMS : 0.000730
+
+Quality Range: 0.000000 59.642578; Used (59.642578 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorf.ply (156183 vn 312362 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp6581399f_454a_4ad3_95ea_d6f03f5c4a5d.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tpfeb27022_ac7b_4e72_85f6_1b5858d34a81.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 158317 vn 316630 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorfAliToRef.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp03e27733_cd76_47e1_a818_a1f99eb17bb3.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 62.762634   mean : 5.903884   RMS : 7.750963
+Values w.r.t. BBox Diag (11001.968750)
+     min : 0.000000   max 0.005705   mean : 0.000537   RMS : 0.000705
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 62.762634   mean : 5.903884   RMS : 7.750963
+Values w.r.t. BBox Diag (11001.968750)
+     min : 0.000000   max 0.005705   mean : 0.000537   RMS : 0.000705
+
+Quality Range: 0.000000 22.838867; Used (340282346638528859811704183484516925440.000000 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 62.762634   mean : 5.903884   RMS : 7.750963
+Values w.r.t. BBox Diag (11001.968750)
+     min : 0.000000   max 0.005705   mean : 0.000537   RMS : 0.000705
+
+Quality Range: 0.000000 22.838867; Used (340282346638528859811704183484516925440.000000 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorfAliToRef.ply (158317 vn 316630 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/curvatureAliVol.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp87bf9a75_89a7_4fac_ad74_b6c0f35e62d0.mlx'
+Starting Script of 1 actionsfilter: Colorize curvature (APSS)
+Mesh has no per vertex radius. Computed and added using default neighbourhood
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/curvatureAliVol.ply (43318 vn 86632 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tpdebbe4e3_2050_48dc_9157_044c510afdfb.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+Mesh Bounding Box Size 6903.754883  5349.399414  6699.850586
+Mesh Bounding Box Diag 11007.538086 
+Mesh Bounding Box min 2121.081299  2751.161377  2402.488525
+Mesh Bounding Box max 9024.835938  8100.560547  9102.338867
+Mesh Surface Area is 112357952.000000
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404
+Mesh Total Len of 129948 Edges is 7843844.000000 Avg Len 60.361404 (including faux edges))
+Thin shell (faces) barycenter:  5138.731445  4976.668945  4962.877930
+Vertices barycenter  5000.016602  5000.032715  5000.041504
+Mesh Volume  is 65217802240.000000
+Center of Mass  is 5395.213379 4875.247070 4680.056152
+Inertia Tensor is :
+    | 170235031686479872.000000  -1743813764710400.000000  55226214205358080.000000 |
+    | -1743813764710400.000000  277843444422934528.000000  -4588819294715904.000000 |
+    | 55226214205358080.000000  -4588819294715904.000000  213723121746706432.000000 |
+Principal axes are :
+    |  0.826341  -0.007871  -0.563116 |
+    |  0.555866   0.171925   0.813299 |
+    | -0.090412   0.985079  -0.146444 |
+axis momenta are :
+    | 132617191257276416.000000  250498332542107648.000000  278685704689549312.000000 |
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl (43318 vn 86632 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl loaded has 157909 vn 315810 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorfAliToRef.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tp81aa3b15_c062_4393_b9fd_d0888de40483.mlx'
+Starting Script of 3 actionsfilter: Hausdorff Distance
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 71.704102   mean : 5.957776   RMS : 7.816740
+Values w.r.t. BBox Diag (11020.726563)
+     min : 0.000000   max 0.006506   mean : 0.000541   RMS : 0.000709
+
+filter: Colorize by vertex Quality
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 71.704102   mean : 5.957776   RMS : 7.816740
+Values w.r.t. BBox Diag (11020.726563)
+     min : 0.000000   max 0.006506   mean : 0.000541   RMS : 0.000709
+
+Quality Range: 0.000000 71.704102; Used (71.704102 0.000000) percentile (100.000000 0.000000) 
+filter: Transfer Color: Vertex to Face
+Hausdorff Distance computed
+     Sampled 156183 pts (rng: 0) on alignedOutputVol.stl searched closest on scaledStanfordBunny.stl
+     min : 0.000000   max 71.704102   mean : 5.957776   RMS : 7.816740
+Values w.r.t. BBox Diag (11020.726563)
+     min : 0.000000   max 0.006506   mean : 0.000541   RMS : 0.000709
+
+Quality Range: 0.000000 71.704102; Used (71.704102 0.000000) percentile (100.000000 0.000000) 
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/alignedOutputVol.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/hausDorfAliToRef.ply (157909 vn 315810 fn)
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl loaded has 43318 vn 86632 fn
+output mesh  C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/curvatureAliVol.ply
+vertex quality, Apply FilterScript: 'C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/tpb33d6d14_6cf2_4cd6_a155_3a4c8be889b2.mlx'
+Starting Script of 1 actionsfilter: Colorize curvature (APSS)
+Mesh has no per vertex radius. Computed and added using default neighbourhood
+Mesh C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/testData/scaledStanfordBunny.stl saved as C:/Users/ScanningLabAnalysis/Documents/MATLAB/Rusty/smlmmeshfitting/output/curvatureAliVol.ply (43318 vn 86632 fn)
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 259896 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/tpb620ca35_6e53_43cf_bcf4_ef8b241a97ee.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+filter Compute Geometric Measures not foundFailed to apply script file E:/MATLAB/tpb620ca35_6e53_43cf_bcf4_ef8b241a97ee.mlx
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 259896 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/tpf9aa3fa2_579e_43c4_831e_dec10be525f4.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+filter Compute Geometric Measures not foundFailed to apply script file E:/MATLAB/tpf9aa3fa2_579e_43c4_831e_dec10be525f4.mlx
+Mesh E:/MATLAB/testData/scaledStanfordBunny.stl loaded has 259896 vn 86632 fn
+output mesh  E:/MATLAB/testData/scaledStanfordBunny.stl
+Apply FilterScript: 'E:/MATLAB/tpbe6d1cbe_8db1_4053_9cde_d1068e218c95.mlx'
+Starting Script of 1 actionsfilter: Compute Geometric Measures
+filter Compute Geometric Measures not foundFailed to apply script file E:/MATLAB/tpbe6d1cbe_8db1_4053_9cde_d1068e218c95.mlx

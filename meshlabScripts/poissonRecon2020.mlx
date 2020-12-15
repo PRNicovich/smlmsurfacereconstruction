@@ -1,0 +1,28 @@
+<!DOCTYPE FilterScript>
+<FilterScript>
+ <filter name="Compute normals for point sets">
+  <Param description="Neighbour num" tooltip="The number of neighbors used to estimate normals." type="RichInt" value="10" isxmlparam="0" name="K"/>
+  <Param description="Smooth Iteration" tooltip="The number of smoothing iteration done on the p used to estimate and propagate normals." type="RichInt" value="0" isxmlparam="0" name="smoothIter"/>
+  <Param description="Flip normals w.r.t. viewpoint" tooltip="If the 'viewpoint' (i.e. scanner position) is known, it can be used to disambiguate normals orientation, so that all the normals will be oriented in the same direction." type="RichBool" value="false" isxmlparam="0" name="flipFlag"/>
+  <Param z="0" description="Viewpoint Pos." tooltip="The viewpoint position can be set by hand (i.e. getting the current viewpoint) or it can be retrieved from mesh camera, if the viewpoint position is stored there." type="RichPoint3f" y="0" isxmlparam="0" x="0" name="viewPos"/>
+ </filter>
+ <filter name="Surface Reconstruction: Screened Poisson">
+  <Param description="Merge all visible layers" tooltip="Enabling this flag means that all the visible layers will be used for providing the points." type="RichBool" value="false" isxmlparam="0" name="visibleLayer"/>
+  <Param description="Reconstruction Depth" tooltip="This integer is the maximum depth of the tree that will be used for surface reconstruction. Running at depth d corresponds to solving on a voxel grid whose resolution is no larger than 2^d x 2^d x 2^d. Note that since the reconstructor adapts the octree to the sampling density, the specified reconstruction depth is only an upper bound. The default value for this parameter is 8." type="RichInt" value="8" isxmlparam="0" name="depth"/>
+  <Param description="Adaptive Octree Depth" tooltip="This integer specifies the depth beyond depth the octree will be adapted. At coarser depths, the octree will be complete, containing all 2^d x 2^d x 2^d nodes. The default value for this parameter is 5." type="RichInt" value="5" isxmlparam="0" name="fullDepth"/>
+  <Param description="Conjugate Gradients Depth" tooltip="This integer is the depth up to which a conjugate-gradients solver will be used to solve the linear system. Beyond this depth Gauss-Seidel relaxation will be used. The default value for this parameter is 0." type="RichInt" value="0" isxmlparam="0" name="cgDepth"/>
+  <Param description="Scale Factor" tooltip="This floating point value specifies the ratio between the diameter of the cube used for reconstruction and the diameter of the samples' bounding cube. The default value is 1.1." type="RichFloat" value="1.1" isxmlparam="0" name="scale"/>
+  <Param description="Minimum Number of Samples" tooltip="This floating point value specifies the minimum number of sample points that should fall within an octree node as the octree construction is adapted to sampling density. For noise-free samples, small values in the range [1.0 - 5.0] can be used. For more noisy samples, larger values in the range [15.0 - 20.0] may be needed to provide a smoother, noise-reduced, reconstruction. The default value is 1.5." type="RichFloat" value="1.5" isxmlparam="0" name="samplesPerNode"/>
+  <Param description="Interpolation Weight" tooltip="This floating point value specifies the importants that interpolation of the point samples is given in the formulation of the screened Poisson equation. The results of the original (unscreened) Poisson Reconstruction can be obtained by setting this value to 0. The default value for this parameter is 4." type="RichFloat" value="4" isxmlparam="0" name="pointWeight"/>
+  <Param description="Gauss-Seidel Relaxations" tooltip="This integer value specifies the number of Gauss-Seidel relaxations to be performed at each level of the hierarchy. The default value for this parameter is 8." type="RichInt" value="8" isxmlparam="0" name="iters"/>
+  <Param description="Confidence Flag" tooltip="Enabling this flag tells the reconstructor to use the quality as confidence information; this is done by scaling the unit normals with the quality values. When the flag is not enabled, all normals are normalized to have unit-length prior to reconstruction." type="RichBool" value="false" isxmlparam="0" name="confidence"/>
+  <Param description="Pre-Clean" tooltip="Enabling this flag force a cleaning pre-pass on the data removing all unreferenced vertices or vertices with null normals." type="RichBool" value="false" isxmlparam="0" name="preClean"/>
+ </filter>
+  <filter name="Discrete Curvatures">
+  <Param enum_val3="ABS Curvature" name="CurvatureType" description="Type:" enum_val1="Gaussian Curvature" enum_val0="Mean Curvature" type="RichEnum" tooltip="Choose the curvatures. Mean and Gaussian curvature are computed according the technique described in the Desbrun et al. paper.&lt;br>Absolute curvature is defined as |H|+|K| and RMS curvature as sqrt(4* H^2 - 2K) as explained in &lt;br>&lt;i>Improved curvature estimationfor watershed segmentation of 3-dimensional meshes &lt;/i> by S. Pulla, A. Razdan, G. Farin. " enum_cardinality="4" enum_val2="RMS Curvature" value="0"/>
+ </filter>
+ <filter name="Smooth: Laplacian Vertex Color">
+  <Param name="iteration" description="Iteration" type="RichInt" tooltip="the number of iteration of the smoothing algorithm" value="3"/>
+ </filter>
+ <filter name="Compute Geometric Measures"/>
+</FilterScript>

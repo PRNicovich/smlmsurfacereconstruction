@@ -1,0 +1,10 @@
+./manuscript/papers
+*.pptx
+*.aux
+*.bbl
+*.bib
+*.blg
+*.log
+*.gz
+*.tex
+./meshlabScripts

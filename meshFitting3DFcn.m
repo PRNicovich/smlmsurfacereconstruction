@@ -1,34 +1,73 @@
 
-function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX, sizeY, sizeZ, nPoints, exampleDataFile, nDetectsPerPoint, ...
-                                                        template, xSlice, subsampleStep, onPoint, ...
-                                                        rotationAroundX, rotationAroundZ, zSlice)
+function varargout = meshFitting3DFcn(varargin)
+%% Inputs
+
+if nargin == 14
+    sizeX = varargin{1};
+    sizeY = varargin{2};
+    sizeZ = varargin{3};
+    nPoints = varargin{4};
+    nDetectsPerPoint = varargin{5};
+    template = varargin{6};
+    xSlice = varargin{7};
+    subsampleStep = varargin{8};
+    onPoint = varargin{9};
+    rotationAroundX = varargin{10};
+    rotationAroundZ = varargin{11};
+    tempFolder = varargin{12};
+    reconScript = varargin{13};
+    reconParams = varargin{14};
+elseif nargin == 1
+    
+    meshObj = varargin{1};
+    
+    % meshfitter object
+    sizeX = meshObj.inputs.sizeX;
+    sizeY = meshObj.inputs.sizeY;
+    sizeZ = meshObj.inputs.sizeZ;
+    nPoints = meshObj.inputs.nPoints;
+    nDetectsPerPoint = meshObj.inputs.nDetectsPerPoint;
+    template = meshObj.inputs.template;
+    xSlice = meshObj.inputs.xSlice;
+    subsampleStep = meshObj.inputs.subsampleStep;
+    onPoint = meshObj.inputs.onPoint;
+    rotationAroundX = meshObj.inputs.rotationAroundX;
+    rotationAroundZ = meshObj.inputs.rotationAroundZ;
+    tempFolder = meshObj.inputs.tempFolder;
+    reconScript = meshObj.inputs.scripts.poissonRecon;
+    reconParams = meshObj.inputs.scripts.params;
+
+end
+
+
+%%
+                                                    
+                                                    
 %----------------------------------------------------------%
 
-    ImportData = Import1File(exampleDataFile);
-    data = ImportData.Data;
-
-    % Make a sphere
-    % circRadius = 700; % nm
-    circCenter = template.Center;
-    % [xunit, yunit, zunit] = sampleSpherePoints(nPoints, circRadius, circCenter);
-
-    % Make a teapot
-    % [xunit, yunit, zunit] = GenerateTestDataFromSTLFile('C:\Users\Rusty Nicovich\Documents\MATLAB\meshFitting\classic-teapot\TEAPOT.stl', ...
-    %     nPoints, circCenter, .07);
 
     if strcmp(template.Format, 'stlFile')
-        [xunit, yunit, zunit] = GenerateTestDataFromSTLFile(template.File, ...
-            nPoints, circCenter, template.Scale);
+        [xunit, yunit, zunit, groundTruth] = GenerateTestDataFromSTLFile(template.File, nPoints);
+        
+        ImportData = Import1File(template.exampleDataFile);
+        data = ImportData.Data;
+        
+        % From zero-noise points sampled on STL file, make some proxy SMLM data
+        z = pointsToSMLMPointCloud(xunit, yunit, zunit, nPoints, nDetectsPerPoint,...
+                                    data(:,7:8));
+
+        % Filter points to remain in ROI bounds
+        z = enforceROIBounds(z, sizeX, sizeY, sizeZ);
+        
+    elseif strcmp(template.Format, 'pointCloud')
+        % Directly supplied an experimental point cloud
+        % No need to generate from STL file
+        
+        z = Import1File(template.exampleDataFile);
+        
     end
-    
-    groundTruth = {xunit, yunit, zunit};
 
-    % From zero-noise points sampled on STL file, make some proxy SMLM data
-    z = pointsToSMLMPointCloud(xunit, yunit, zunit, nPoints, nDetectsPerPoint,...
-                                data(:,7:8));
 
-    % Filter points to remain in ROI bounds
-    z = enforceROIBounds(z, sizeX, sizeY, sizeZ);
 
     %% Rotate input point cloud to avoid having one big plane parallel to the z axis
     % First step in 3d reconstruction analysis.  Required if object has a large
@@ -42,6 +81,8 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
 
     ptRange = [max(zRot(:,(1:3))); min(zRot(:,1:3))];
     
+    assignin('base', 'zRot', zRot);
+    
     xPiecewise = fitPointSetLoop(zRot, ptRange(2,1), ptRange(1,1), xSlice, 2, subsampleStep, onPoint);
     
     
@@ -51,7 +92,7 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     
     %% Loop over slices in z
     % Repeat above section with same parameters but on perpendicular axis.
-    zPiecewise = fitPointSetLoop(zRot, ptRange(2,2), ptRange(1,2), xSlice, 3, subsampleStep, onPoint);
+    zPiecewise = fitPointSetLoop(zRot, ptRange(2,3), ptRange(1,3), xSlice, 3, subsampleStep, onPoint);
 
 
     %% Loop over slices between X and Y axes
@@ -71,13 +112,13 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     % Determine threshold for splitting
     % Can feed eithe xPiecewise or yPiecewise values
     % Do both and then take mean as best choice
-    [threshX, splitDistX] = rosinThreshold(xPiecewise, 'doPlot', true);
-    [threshY, splitDistY] = rosinThreshold(yPiecewise, 'doPlot', true);
-    [threshZ, splitDistZ] = rosinThreshold(zPiecewise, 'doPlot', true);
+    [threshX, splitDistX] = rosinThreshold(xPiecewise, 'doPlot', false);
+    [threshY, splitDistY] = rosinThreshold(yPiecewise, 'doPlot', false);
+    [threshZ, splitDistZ] = rosinThreshold(zPiecewise, 'doPlot', false);
 
-    [threshB, splitDistB] = rosinThreshold(bPiecewise, 'doPlot', true);
-    [threshC, splitDistC] = rosinThreshold(cPiecewise, 'doPlot', true);
-    [threshD, splitDistD] = rosinThreshold(dPiecewise, 'doPlot', true);
+    [threshB, splitDistB] = rosinThreshold(bPiecewise, 'doPlot', false);
+    [threshC, splitDistC] = rosinThreshold(cPiecewise, 'doPlot', false);
+    [threshD, splitDistD] = rosinThreshold(dPiecewise, 'doPlot', false);
 
     threshVal = (threshX + threshY + threshZ + threshB + threshC + threshD)/6;
 
@@ -97,31 +138,9 @@ function [z, zComb, polygonReturn, pwOut, groundTruth] = meshFitting3DFcn(sizeX,
     
     pwOut = {xPiecewise, yPiecewise, zPiecewise, bPiecewise, cPiecewise, dPiecewise};
 
-%     %% Z slice fitted curves
-%     % Generate regularly-spaced points that hopefully don't have too much trash
-%     % in the set
-% 
-%     % Make all connected point pairs into a single variable
-%     % No way this isn't done better in a graph class, but don't know how to
-%     % implement that....
-
-%     zVect = ptRange(2,3) : zSlice : ptRange(1,3);
-% 
-%     zPiecewise = cell(numel(zVect), 2);
-%     zP = [];
-%     zP2 = [];
-% 
-%     for k = 1:numel(zVect)
-% 
-%         zP = [zP; generateZSlicePoints(xPiecewise, zVect(k), 'x')];
-%         zP = [zP; generateZSlicePoints(yPiecewise, zVect(k), 'y')];
-%         zP2 = [zP2; generateZSlicePoints(bPiecewise, zVect(k), 'x')];
-%         zP2 = [zP2; generateZSlicePoints(cPiecewise, zVect(k), 'y')];    
-% 
-%     end
 try    
-    zP = [vertcat(xPiecewise{:}); vertcat(yPiecewise{:}); vertcat(zPiecewise{:})];
-    zP2 = [vertcat(bPiecewise{:}); vertcat(cPiecewise{:}); vertcat(dPiecewise{:})];
+    zP = [vertcat(xPiecewise{:,1}); vertcat(yPiecewise{:,1}); vertcat(zPiecewise{:,1})];
+    zP2 = [vertcat(bPiecewise{:,1}); vertcat(cPiecewise{:,1}); vertcat(dPiecewise{:,1})];
 
     %% Un-rotate point cloud
     % Rotate back zP2
@@ -134,10 +153,13 @@ catch
     assignin('base', 'yPiecewise', yPiecewise);
     assignin('base', 'zPiecewise', zPiecewise);
 end
-    %% Unskew original point cloud
-    % Undo previous rotation to return to original point cloud orientation. 
 
-    % zP = rotateCloudAroundAxis(zP, -rotationAroundX, 'x');
+%%
+%%%%%%%%%%%%%%%%%%
+% Probably best spot to try to do segementation on denoised data here
+% Throw to DBSCAN
+%%%%%%%%%%%%%%%%%%
+
 
     %% Display
     figure(1)
@@ -164,6 +186,7 @@ end
     %     end
     % end
 
+    plot3(z(:,1), z(:,2), z(:,3), '.', 'color', [0.6, 0.6, 0.6], 'markersize', 1);
     plot3(zComb(:,1), zComb(:,2), zComb(:,3), 'k.', 'markersize', 1)
 
     % 
@@ -191,11 +214,10 @@ end
     % pcwrite(ptCloud, 'ptCloud20190527.ply');
     % 
 
-
     %% Generate a fitted mesh to the extracted points
     % Can pass off to MeshLab to do the crunching here
 
-    dlmwrite('ptsOut20200618.xyz', zComb, 'delimiter', '\t');
+    dlmwrite(fullfile(tempFolder, 'ptsOut20200618.xyz'), zComb, 'delimiter', '\t');
 
     %%
     % In MeshLab
@@ -207,10 +229,29 @@ end
 
     % To add : call out modifications to script as inputs to this function.
     % 
-    scriptFile = modifyMeshLabScript('poissonRecon.mlx', 'saveInPlace', false, 'poissonDepth', 9);
+    scriptFile = modifyMeshLabScript(reconScript, 'saveInPlace', false, 'poissonDepth', reconParams.poissonDepth);
 
-    polygonReturn = processWithMeshLab('ptsOut20200618.xyz', scriptFile); % Works!
+    [polygonReturn, ~, meshProps] = processWithMeshLab(fullfile(tempFolder, 'ptsOut20200618.xyz'), scriptFile); % Works!
     delete(scriptFile);
+    
+    if nargout == 6
+        varargout{1} = z;
+        varargout{1} = zComb;
+        varargout{1} = polygonReturn;
+        varargout{1} = pwOut;
+        varargout{1} = groundTruth;
+        varargout{1} = meshProps;
+    elseif nargout == 1
+        meshObj.results.z = z;
+        meshObj.results.zComb = zComb;
+        meshObj.results.polygonReturn = polygonReturn;
+        meshObj.results.pwOut = pwOut;
+        meshObj.results.meshProps = meshProps;
+        
+        meshObj.inputs.groundTruth = groundTruth;
+        
+        varargout{1} = meshObj;
+    end
 
 end
 
